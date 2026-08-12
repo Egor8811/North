@@ -7,17 +7,28 @@
 <title>NORTH</title>
 
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
+*{
+ box-sizing:border-box;
+ -webkit-tap-highlight-color:transparent;
+}
+
+html{
+ scroll-behavior:smooth;
+}
+
 body{
  margin:0;
  min-height:100vh;
  background:#090b10;
  color:#f5f7fb;
  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
- transition:.3s;
+ transition:background .25s,color .25s;
 }
-body.light{background:#f3f5f9;color:#111827}
+
+body.light{
+ background:#f3f5f9;
+ color:#111827;
+}
 
 :root{
  --bg:#090b10;
@@ -34,22 +45,47 @@ body.light{background:#f3f5f9;color:#111827}
 
 body.light{
  --bg:#f3f5f9;
- --side:#fff;
- --panel:#fff;
+ --side:#ffffff;
+ --panel:#ffffff;
  --panel2:#eef1f6;
  --border:#dce2eb;
  --text:#111827;
  --muted:#667085;
 }
 
-button,input,textarea,select{font:inherit}
-button{cursor:pointer;touch-action:manipulation}
-
-button,.card,.nav button,.icon,.field,.task,.note{
- transition:transform .18s,background .25s,border-color .25s,box-shadow .25s;
+button,
+input,
+textarea,
+select{
+ font:inherit;
 }
 
-button:active{transform:scale(.95)}
+button{
+ cursor:pointer;
+ touch-action:manipulation;
+}
+
+button,
+.card,
+.nav button,
+.icon,
+.field,
+.task,
+.note{
+ transition:
+ transform .18s,
+ background .25s,
+ border-color .25s,
+ box-shadow .25s,
+ color .25s;
+}
+
+button:active{
+ transform:scale(.96);
+}
+
+
+/* SIDEBAR */
 
 .sidebar{
  position:fixed;
@@ -70,9 +106,14 @@ button:active{transform:scale(.95)}
  letter-spacing:-1px;
 }
 
-.logo span{color:var(--accent)}
+.logo span{
+ color:var(--accent);
+}
 
-.nav{display:grid;gap:6px}
+.nav{
+ display:grid;
+ gap:6px;
+}
 
 .nav button{
  width:100%;
@@ -82,6 +123,8 @@ button:active{transform:scale(.95)}
  padding:13px;
  text-align:left;
  border-radius:11px;
+ position:relative;
+ overflow:hidden;
 }
 
 .nav button:hover{
@@ -105,13 +148,22 @@ button:active{transform:scale(.95)}
  gap:8px;
 }
 
-.smallBtn,.secondary{
+.smallBtn,
+.secondary{
  border:1px solid var(--border);
  background:var(--panel2);
  color:var(--text);
  padding:11px 15px;
  border-radius:10px;
 }
+
+.smallBtn:hover,
+.secondary:hover{
+ border-color:var(--accent);
+}
+
+
+/* MAIN */
 
 .main{
  width:calc(100% - 250px);
@@ -138,12 +190,16 @@ button:active{transform:scale(.95)}
  outline:0;
 }
 
-.search:focus,.field:focus{
+.search:focus,
+.field:focus{
  border-color:var(--accent);
- box-shadow:0 0 0 3px rgba(118,87,255,.1);
+ box-shadow:0 0 0 3px rgba(118,87,255,.12);
 }
 
-.actions{display:flex;gap:8px}
+.actions{
+ display:flex;
+ gap:8px;
+}
 
 .icon{
  width:44px;
@@ -152,15 +208,39 @@ button:active{transform:scale(.95)}
  border-radius:11px;
  background:var(--panel);
  color:var(--text);
+ position:relative;
+ overflow:hidden;
 }
 
-.view{display:none;animation:show .3s ease}
-.view.active{display:block}
+.icon:hover{
+ border-color:var(--accent);
+}
+
+
+/* VIEWS */
+
+.view{
+ display:none;
+ animation:show .3s ease;
+}
+
+.view.active{
+ display:block;
+}
 
 @keyframes show{
- from{opacity:0;transform:translateY(8px)}
- to{opacity:1;transform:none}
+ from{
+  opacity:0;
+  transform:translateY(8px);
+ }
+ to{
+  opacity:1;
+  transform:none;
+ }
 }
+
+
+/* HERO */
 
 .hero{
  padding:32px;
@@ -171,7 +251,7 @@ button:active{transform:scale(.95)}
 }
 
 body.light .hero{
- background:linear-gradient(135deg,#fff,#eef0ff)
+ background:linear-gradient(135deg,#ffffff,#eef0ff);
 }
 
 .hero h1{
@@ -180,7 +260,13 @@ body.light .hero{
  letter-spacing:-1px;
 }
 
-.hero p{margin:0;color:var(--muted)}
+.hero p{
+ margin:0;
+ color:var(--muted);
+}
+
+
+/* GRID */
 
 .grid{
  display:grid;
@@ -195,17 +281,46 @@ body.light .hero{
  padding:19px;
 }
 
-.card:hover{transform:translateY(-2px)}
+.card:hover{
+ transform:translateY(-2px);
+}
 
-.span3{grid-column:span 3}
-.span4{grid-column:span 4}
-.span6{grid-column:span 6}
-.span8{grid-column:span 8}
-.span12{grid-column:span 12}
+.span3{
+ grid-column:span 3;
+}
 
-.card h3{margin:0 0 14px;font-size:15px}
-.stat{font-size:31px;font-weight:850}
-.muted{color:var(--muted)}
+.span4{
+ grid-column:span 4;
+}
+
+.span6{
+ grid-column:span 6;
+}
+
+.span8{
+ grid-column:span 8;
+}
+
+.span12{
+ grid-column:span 12;
+}
+
+.card h3{
+ margin:0 0 14px;
+ font-size:15px;
+}
+
+.stat{
+ font-size:31px;
+ font-weight:850;
+}
+
+.muted{
+ color:var(--muted);
+}
+
+
+/* BUTTONS */
 
 .primary{
  border:0;
@@ -214,12 +329,17 @@ body.light .hero{
  padding:11px 16px;
  border-radius:10px;
  font-weight:700;
+ position:relative;
+ overflow:hidden;
 }
 
 .primary:hover{
  transform:translateY(-2px);
  box-shadow:0 9px 25px rgba(118,87,255,.28);
 }
+
+
+/* FIELDS */
 
 .field{
  width:100%;
@@ -231,9 +351,23 @@ body.light .hero{
  outline:0;
 }
 
-.taskInput{display:flex;gap:8px;margin-bottom:15px}
+textarea{
+ resize:vertical;
+}
 
-.tasks{display:grid;gap:8px}
+
+/* TASKS */
+
+.taskInput{
+ display:flex;
+ gap:8px;
+ margin-bottom:15px;
+}
+
+.tasks{
+ display:grid;
+ gap:8px;
+}
 
 .task{
  display:flex;
@@ -254,9 +388,15 @@ body.light .hero{
  border:0;
  background:transparent;
  color:var(--muted);
+ padding:7px;
 }
 
-.delete:hover{color:var(--danger)}
+.delete:hover{
+ color:var(--danger);
+}
+
+
+/* NOTES */
 
 .notes{
  display:grid;
@@ -278,7 +418,13 @@ body.light .hero{
  border-color:var(--accent);
 }
 
-.noteTitle{font-weight:800;margin-bottom:8px}
+.noteTitle{
+ font-weight:800;
+ margin-bottom:8px;
+}
+
+
+/* TOOLS */
 
 .tools{
  display:grid;
@@ -286,7 +432,9 @@ body.light .hero{
  gap:16px;
 }
 
-.timer{text-align:center}
+.timer{
+ text-align:center;
+}
 
 .time{
  font-size:48px;
@@ -309,6 +457,9 @@ body.light .hero{
  transition:width .5s;
 }
 
+
+/* ROW */
+
 .row{
  display:flex;
  justify-content:space-between;
@@ -318,7 +469,9 @@ body.light .hero{
  border-bottom:1px solid var(--border);
 }
 
-.row:last-child{border:0}
+.row:last-child{
+ border:0;
+}
 
 .tag{
  padding:5px 8px;
@@ -327,6 +480,9 @@ body.light .hero{
  color:var(--muted);
  font-size:12px;
 }
+
+
+/* CALCULATOR */
 
 .calc{
  display:grid;
@@ -346,6 +502,8 @@ body.light .hero{
  border:1px solid var(--border);
  background:var(--panel2);
  color:var(--text);
+ position:relative;
+ overflow:hidden;
 }
 
 .calc button:hover{
@@ -358,6 +516,9 @@ body.light .hero{
  background:var(--accent);
  color:white;
 }
+
+
+/* CALENDAR */
 
 .calendarHeader{
  display:flex;
@@ -386,7 +547,54 @@ body.light .hero{
  font-weight:800;
 }
 
-.day.empty{background:transparent}
+.day.empty{
+ background:transparent;
+}
+
+
+/* SETTINGS */
+
+.settingsRow{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:20px;
+ padding:15px 0;
+ border-bottom:1px solid var(--border);
+}
+
+.settingsRow:last-child{
+ border-bottom:0;
+}
+
+.switch{
+ width:48px;
+ height:27px;
+ border:0;
+ border-radius:20px;
+ background:var(--panel2);
+ padding:3px;
+}
+
+.switch i{
+ display:block;
+ width:21px;
+ height:21px;
+ border-radius:50%;
+ background:white;
+ transition:.2s;
+}
+
+.switch.on{
+ background:var(--accent);
+}
+
+.switch.on i{
+ transform:translateX(21px);
+}
+
+
+/* MODAL */
 
 .modal{
  position:fixed;
@@ -400,7 +608,9 @@ body.light .hero{
  backdrop-filter:blur(5px);
 }
 
-.modal.show{display:flex}
+.modal.show{
+ display:flex;
+}
 
 .modalBox{
  width:min(600px,92vw);
@@ -412,11 +622,21 @@ body.light .hero{
 }
 
 @keyframes modalIn{
- from{opacity:0;transform:scale(.96)}
- to{opacity:1;transform:none}
+ from{
+  opacity:0;
+  transform:scale(.96);
+ }
+ to{
+  opacity:1;
+  transform:none;
+ }
 }
 
-.results{display:grid;gap:6px;margin-top:10px}
+.results{
+ display:grid;
+ gap:6px;
+ margin-top:10px;
+}
 
 .results button{
  border:0;
@@ -426,6 +646,14 @@ body.light .hero{
  padding:13px;
  border-radius:9px;
 }
+
+.results button:hover{
+ background:var(--accent);
+ color:white;
+}
+
+
+/* TOAST */
 
 .toast{
  position:fixed;
@@ -449,37 +677,8 @@ body.light .hero{
  transform:none;
 }
 
-.settingsRow{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:20px;
- padding:15px 0;
- border-bottom:1px solid var(--border);
-}
 
-.switch{
- width:48px;
- height:27px;
- border:0;
- border-radius:20px;
- background:var(--panel2);
- padding:3px;
-}
-
-.switch i{
- display:block;
- width:21px;
- height:21px;
- border-radius:50%;
- background:white;
- transition:.2s;
-}
-
-.switch.on{background:var(--accent)}
-.switch.on i{transform:translateX(21px)}
-
-.bottomNav{display:none}
+/* RIPPLE */
 
 .ripple{
  position:absolute;
@@ -491,11 +690,21 @@ body.light .hero{
 }
 
 @keyframes ripple{
- to{transform:scale(4);opacity:0}
+ to{
+  transform:scale(4);
+  opacity:0;
+ }
 }
 
 
-/* ---------- MOBILE ---------- */
+/* MOBILE NAV */
+
+.bottomNav{
+ display:none;
+}
+
+
+/* MOBILE */
 
 @media(max-width:850px){
 
@@ -550,7 +759,11 @@ body.light .hero{
   gap:12px;
  }
 
- .span3,.span4,.span6,.span8,.span12{
+ .span3,
+ .span4,
+ .span6,
+ .span8,
+ .span12{
   grid-column:span 1;
  }
 
@@ -645,14 +858,10 @@ body.light .hero{
   width:calc(100% - 24px);
  }
 
- .settingsRow{
-  align-items:center;
- }
-
 }
 
 
-/* very small screens */
+/* SMALL PHONES */
 
 @media(max-width:430px){
 
@@ -704,32 +913,64 @@ body.light .hero{
 
 <body>
 
+<!-- SIDEBAR -->
+
 <aside class="sidebar">
 
 <div class="logo">N<span>O</span>RTH</div>
 
 <nav class="nav">
 
-<button class="active" data-view="home">⌂ &nbsp; <span data-i18n="home">Главная</span></button>
-<button data-view="tasks">✓ &nbsp; <span data-i18n="tasks">Задачи</span></button>
-<button data-view="notes">▤ &nbsp; <span data-i18n="notes">Заметки</span></button>
-<button data-view="tools">⚙ &nbsp; <span data-i18n="tools">Инструменты</span></button>
-<button data-view="calendar">▦ &nbsp; <span data-i18n="calendar">Календарь</span></button>
-<button data-view="stats">▥ &nbsp; <span data-i18n="stats">Статистика</span></button>
-<button data-view="activity">◷ &nbsp; <span data-i18n="activity">Активность</span></button>
-<button data-view="settings">⚙ &nbsp; <span data-i18n="settings">Настройки</span></button>
+<button class="active" data-view="home">
+⌂ &nbsp; <span data-i18n="home">Главная</span>
+</button>
+
+<button data-view="tasks">
+✓ &nbsp; <span data-i18n="tasks">Задачи</span>
+</button>
+
+<button data-view="notes">
+▤ &nbsp; <span data-i18n="notes">Заметки</span>
+</button>
+
+<button data-view="tools">
+⚙ &nbsp; <span data-i18n="tools">Инструменты</span>
+</button>
+
+<button data-view="calendar">
+▦ &nbsp; <span data-i18n="calendar">Календарь</span>
+</button>
+
+<button data-view="stats">
+▥ &nbsp; <span data-i18n="stats">Статистика</span>
+</button>
+
+<button data-view="activity">
+◷ &nbsp; <span data-i18n="activity">Активность</span>
+</button>
+
+<button data-view="settings">
+⚙ &nbsp; <span data-i18n="settings">Настройки</span>
+</button>
 
 </nav>
 
 <div class="sidebarBottom">
 
-<button class="smallBtn" id="themeBtn">☼ <span data-i18n="theme">Тема</span></button>
-<button class="smallBtn" id="clearBtn" data-i18n="clear">Очистить данные</button>
+<button class="smallBtn" id="themeBtn">
+☼ <span data-i18n="theme">Тема</span>
+</button>
+
+<button class="smallBtn" id="clearBtn" data-i18n="clear">
+Очистить данные
+</button>
 
 </div>
 
 </aside>
 
+
+<!-- MAIN -->
 
 <main class="main">
 
@@ -751,11 +992,15 @@ placeholder="Поиск...   Ctrl + K"
 </div>
 
 
+<!-- HOME -->
+
 <section id="home" class="view active">
 
 <div class="hero">
 
-<h1 data-i18n="dashboard">Рабочее пространство</h1>
+<h1 data-i18n="dashboard">
+Рабочее пространство
+</h1>
 
 <p data-i18n="dashboardSub">
 NORTH — набор полезных инструментов в одном месте.
@@ -766,46 +1011,104 @@ NORTH — набор полезных инструментов в одном м�
 <div class="grid">
 
 <div class="card span3">
-<h3 data-i18n="activeTasks">Активные задачи</h3>
+
+<h3 data-i18n="activeTasks">
+Активные задачи
+</h3>
+
 <div class="stat" id="taskStat">0</div>
-<span class="muted" data-i18n="left">осталось</span>
+
+<span class="muted" data-i18n="left">
+осталось
+</span>
+
 </div>
 
+
 <div class="card span3">
-<h3 data-i18n="notesCount">Заметки</h3>
+
+<h3 data-i18n="notesCount">
+Заметки
+</h3>
+
 <div class="stat" id="noteStat">0</div>
-<span class="muted" data-i18n="saved">сохранено</span>
+
+<span class="muted" data-i18n="saved">
+сохранено
+</span>
+
 </div>
 
+
 <div class="card span3">
-<h3 data-i18n="completed">Выполнено</h3>
+
+<h3 data-i18n="completed">
+Выполнено
+</h3>
+
 <div class="stat" id="doneStat">0</div>
-<span class="muted" data-i18n="tasksWord">задач</span>
+
+<span class="muted" data-i18n="tasksWord">
+задач
+</span>
+
 </div>
 
+
 <div class="card span3">
-<h3 data-i18n="now">Сейчас</h3>
-<div class="stat" id="clock">--:--</div>
-<span class="muted" id="date"></span>
+
+<h3 data-i18n="now">
+Сейчас
+</h3>
+
+<div class="stat" id="clock">
+--:--
 </div>
+
+<span class="muted" id="date"></span>
+
+</div>
+
 
 <div class="card span6">
 
-<h3 data-i18n="quick">Быстрые действия</h3>
+<h3 data-i18n="quick">
+Быстрые действия
+</h3>
 
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 
-<button class="primary" onclick="showView('tasks')" data-i18n="newTask">+ Задача</button>
-<button class="secondary" onclick="showView('notes')" data-i18n="newNote">+ Заметка</button>
-<button class="secondary" onclick="showView('tools')" data-i18n="tools">Инструменты</button>
+<button
+class="primary"
+onclick="showView('tasks')"
+data-i18n="newTask">
++ Задача
+</button>
+
+<button
+class="secondary"
+onclick="showView('notes')"
+data-i18n="newNote">
++ Заметка
+</button>
+
+<button
+class="secondary"
+onclick="showView('tools')"
+data-i18n="tools">
+Инструменты
+</button>
 
 </div>
 
 </div>
+
 
 <div class="card span6">
 
-<h3 data-i18n="progress">Прогресс</h3>
+<h3 data-i18n="progress">
+Прогресс
+</h3>
 
 <div class="progress">
 <div class="progressBar" id="progressBar"></div>
@@ -815,28 +1118,37 @@ NORTH — набор полезных инструментов в одном м�
 
 </div>
 
+
 <div class="card span8">
 
-<h3 data-i18n="recent">Последние задачи</h3>
+<h3 data-i18n="recent">
+Последние задачи
+</h3>
 
 <div id="homeTasks"></div>
 
 </div>
 
+
 <div class="card span4">
 
-<h3 data-i18n="shortcuts">Быстрые клавиши</h3>
+<h3 data-i18n="shortcuts">
+Быстрые клавиши
+</h3>
 
 <div class="row">
-<span data-i18n="search">Поиск</span><b>Ctrl K</b>
+<span data-i18n="search">Поиск</span>
+<b>Ctrl K</b>
 </div>
 
 <div class="row">
-<span data-i18n="homeWord">Главная</span><b>H</b>
+<span data-i18n="homeWord">Главная</span>
+<b>H</b>
 </div>
 
 <div class="row">
-<span data-i18n="theme">Тема</span><b>T</b>
+<span data-i18n="theme">Тема</span>
+<b>T</b>
 </div>
 
 </div>
@@ -846,20 +1158,39 @@ NORTH — набор полезных инструментов в одном м�
 </section>
 
 
+<!-- TASKS -->
+
 <section id="tasks" class="view">
 
 <div class="hero">
-<h1 data-i18n="tasksTitle">Задачи</h1>
-<p data-i18n="tasksSub">Организуй свои дела.</p>
+
+<h1 data-i18n="tasksTitle">
+Задачи
+</h1>
+
+<p data-i18n="tasksSub">
+Организуй свои дела.
+</p>
+
 </div>
 
 <div class="card">
 
 <div class="taskInput">
 
-<input class="field" id="taskInput" data-placeholder="taskPlaceholder" placeholder="Что нужно сделать?">
+<input
+class="field"
+id="taskInput"
+data-placeholder="taskPlaceholder"
+placeholder="Что нужно сделать?"
+>
 
-<button class="primary" id="addTask" data-i18n="add">Добавить</button>
+<button
+class="primary"
+id="addTask"
+data-i18n="add">
+Добавить
+</button>
 
 </div>
 
@@ -870,24 +1201,49 @@ NORTH — набор полезных инструментов в одном м�
 </section>
 
 
+<!-- NOTES -->
+
 <section id="notes" class="view">
 
 <div class="hero">
-<h1 data-i18n="notesTitle">Заметки</h1>
-<p data-i18n="notesSub">Локальные заметки с автоматическим сохранением.</p>
+
+<h1 data-i18n="notesTitle">
+Заметки
+</h1>
+
+<p data-i18n="notesSub">
+Локальные заметки с автоматическим сохранением.
+</p>
+
 </div>
 
 <div class="card">
 
-<input class="field" id="noteTitle" data-placeholder="noteTitlePlaceholder" placeholder="Название">
+<input
+class="field"
+id="noteTitle"
+data-placeholder="noteTitlePlaceholder"
+placeholder="Название"
+>
 
 <br><br>
 
-<textarea class="field" id="noteText" rows="5" data-placeholder="noteTextPlaceholder" placeholder="Текст..."></textarea>
+<textarea
+class="field"
+id="noteText"
+rows="5"
+data-placeholder="noteTextPlaceholder"
+placeholder="Текст..."
+></textarea>
 
 <br><br>
 
-<button class="primary" id="addNote" data-i18n="save">Сохранить</button>
+<button
+class="primary"
+id="addNote"
+data-i18n="save">
+Сохранить
+</button>
 
 <div class="notes" id="noteList"></div>
 
@@ -896,46 +1252,92 @@ NORTH — набор полезных инструментов в одном м�
 </section>
 
 
+<!-- TOOLS -->
+
 <section id="tools" class="view">
 
 <div class="hero">
-<h1 data-i18n="toolsTitle">Инструменты</h1>
-<p data-i18n="toolsSub">Таймеры, секундомер, калькулятор и конвертер.</p>
+
+<h1 data-i18n="toolsTitle">
+Инструменты
+</h1>
+
+<p data-i18n="toolsSub">
+Таймеры, секундомер, калькулятор и конвертер.
+</p>
+
 </div>
 
 <div class="tools">
 
+
 <div class="card timer">
 
-<h3 data-i18n="focus">Фокус-таймер</h3>
+<h3 data-i18n="focus">
+Фокус-таймер
+</h3>
 
-<div class="time" id="timer">25:00</div>
+<div class="time" id="timer">
+25:00
+</div>
 
-<button class="primary" id="timerStart" data-i18n="start">Старт</button>
-<button class="secondary" id="timerReset" data-i18n="reset">Сброс</button>
+<button
+class="primary"
+id="timerStart"
+data-i18n="start">
+Старт
+</button>
+
+<button
+class="secondary"
+id="timerReset"
+data-i18n="reset">
+Сброс
+</button>
 
 </div>
 
 
 <div class="card timer">
 
-<h3 data-i18n="stopwatch">Секундомер</h3>
+<h3 data-i18n="stopwatch">
+Секундомер
+</h3>
 
-<div class="time" id="stopwatch">00:00.0</div>
+<div class="time" id="stopwatch">
+00:00.0
+</div>
 
-<button class="primary" id="swStart" data-i18n="start">Старт</button>
-<button class="secondary" id="swReset" data-i18n="reset">Сброс</button>
+<button
+class="primary"
+id="swStart"
+data-i18n="start">
+Старт
+</button>
+
+<button
+class="secondary"
+id="swReset"
+data-i18n="reset">
+Сброс
+</button>
 
 </div>
 
 
 <div class="card">
 
-<h3 data-i18n="calculator">Калькулятор</h3>
+<h3 data-i18n="calculator">
+Калькулятор
+</h3>
 
 <div class="calc">
 
-<input class="field" id="calcDisplay" readonly>
+<input
+class="field"
+id="calcDisplay"
+readonly
+>
 
 <button data-c="7">7</button>
 <button data-c="8">8</button>
@@ -957,7 +1359,9 @@ NORTH — набор полезных инструментов в одном м�
 <button data-c="C">C</button>
 <button data-c="+">+</button>
 
-<button class="equals" data-c="=">=</button>
+<button class="equals" data-c="=">
+=
+</button>
 
 </div>
 
@@ -966,9 +1370,16 @@ NORTH — набор полезных инструментов в одном м�
 
 <div class="card">
 
-<h3 data-i18n="converter">Конвертер</h3>
+<h3 data-i18n="converter">
+Конвертер
+</h3>
 
-<input class="field" type="number" id="convValue" value="1">
+<input
+class="field"
+type="number"
+id="convValue"
+value="1"
+>
 
 <br><br>
 
@@ -985,7 +1396,9 @@ NORTH — набор полезных инструментов в одном м�
 
 <br><br>
 
-<div class="stat" id="convResult">0</div>
+<div class="stat" id="convResult">
+0
+</div>
 
 </div>
 
@@ -994,20 +1407,35 @@ NORTH — набор полезных инструментов в одном м�
 </section>
 
 
+<!-- CALENDAR -->
+
 <section id="calendar" class="view">
 
 <div class="hero">
-<h1 data-i18n="calendarTitle">Календарь</h1>
-<p data-i18n="calendarSub">Текущий месяц и сегодняшний день.</p>
+
+<h1 data-i18n="calendarTitle">
+Календарь
+</h1>
+
+<p data-i18n="calendarSub">
+Текущий месяц и сегодняшний день.
+</p>
+
 </div>
 
 <div class="card">
 
 <div class="calendarHeader">
 
-<button class="secondary" id="prevMonth">←</button>
+<button class="secondary" id="prevMonth">
+←
+</button>
+
 <h2 id="calendarTitleText"></h2>
-<button class="secondary" id="nextMonth">→</button>
+
+<button class="secondary" id="nextMonth">
+→
+</button>
 
 </div>
 
@@ -1018,33 +1446,68 @@ NORTH — набор полезных инструментов в одном м�
 </section>
 
 
+<!-- STATS -->
+
 <section id="stats" class="view">
 
 <div class="hero">
-<h1 data-i18n="statsTitle">Статистика</h1>
-<p data-i18n="statsSub">Обзор использования NORTH.</p>
+
+<h1 data-i18n="statsTitle">
+Статистика
+</h1>
+
+<p data-i18n="statsSub">
+Обзор использования NORTH.
+</p>
+
 </div>
 
 <div class="grid">
 
 <div class="card span4">
-<h3 data-i18n="total">Всего задач</h3>
-<div class="stat" id="totalStat">0</div>
+
+<h3 data-i18n="total">
+Всего задач
+</h3>
+
+<div class="stat" id="totalStat">
+0
 </div>
 
-<div class="card span4">
-<h3 data-i18n="completed">Выполнено</h3>
-<div class="stat" id="completeStat">0</div>
 </div>
 
+
 <div class="card span4">
-<h3 data-i18n="notesCount">Заметок</h3>
-<div class="stat" id="statsNotes">0</div>
+
+<h3 data-i18n="completed">
+Выполнено
+</h3>
+
+<div class="stat" id="completeStat">
+0
 </div>
+
+</div>
+
+
+<div class="card span4">
+
+<h3 data-i18n="notesCount">
+Заметок
+</h3>
+
+<div class="stat" id="statsNotes">
+0
+</div>
+
+</div>
+
 
 <div class="card span12">
 
-<h3 data-i18n="completion">Выполнение задач</h3>
+<h3 data-i18n="completion">
+Выполнение задач
+</h3>
 
 <div class="progress">
 <div class="progressBar" id="statsProgress"></div>
@@ -1059,11 +1522,20 @@ NORTH — набор полезных инструментов в одном м�
 </section>
 
 
+<!-- ACTIVITY -->
+
 <section id="activity" class="view">
 
 <div class="hero">
-<h1 data-i18n="activityTitle">Активность</h1>
-<p data-i18n="activitySub">История действий на этом устройстве.</p>
+
+<h1 data-i18n="activityTitle">
+Активность
+</h1>
+
+<p data-i18n="activitySub">
+История действий на этом устройстве.
+</p>
+
 </div>
 
 <div class="card" id="activityList"></div>
@@ -1071,39 +1543,74 @@ NORTH — набор полезных инструментов в одном м�
 </section>
 
 
+<!-- SETTINGS -->
+
 <section id="settings" class="view">
 
 <div class="hero">
-<h1 data-i18n="settingsTitle">Настройки</h1>
-<p data-i18n="settingsSub">Настрой NORTH под себя.</p>
+
+<h1 data-i18n="settingsTitle">
+Настройки
+</h1>
+
+<p data-i18n="settingsSub">
+Настрой NORTH под себя.
+</p>
+
 </div>
 
 <div class="card">
 
-<div class="settingsRow">
-
-<div>
-<b data-i18n="soundTitle">Звуки интерфейса</b>
-<br>
-<span class="muted" data-i18n="soundSub">Разные звуки для действий</span>
-</div>
-
-<button class="switch on" id="soundSwitch"><i></i></button>
-
-</div>
-
 
 <div class="settingsRow">
 
 <div>
-<b data-i18n="language">Язык</b>
+
+<b data-i18n="soundTitle">
+Звуки интерфейса
+</b>
+
 <br>
-<span class="muted" data-i18n="languageSub">Язык интерфейса</span>
+
+<span class="muted" data-i18n="soundSub">
+Разные звуки для действий
+</span>
+
+</div>
+
+<button class="switch on" id="soundSwitch">
+<i></i>
+</button>
+
+</div>
+
+
+<div class="settingsRow">
+
+<div>
+
+<b data-i18n="language">
+Язык
+</b>
+
+<br>
+
+<span class="muted" data-i18n="languageSub">
+Язык интерфейса
+</span>
+
 </div>
 
 <select class="secondary" id="languageSelect">
-<option value="ru">Русский</option>
-<option value="en">English</option>
+
+<option value="ru">
+Русский
+</option>
+
+<option value="en">
+English
+</option>
+
 </select>
 
 </div>
@@ -1112,12 +1619,25 @@ NORTH — набор полезных инструментов в одном м�
 <div class="settingsRow">
 
 <div>
-<b data-i18n="darkTheme">Тёмная тема</b>
+
+<b data-i18n="darkTheme">
+Тёмная тема
+</b>
+
 <br>
-<span class="muted" data-i18n="themeSub">Изменить внешний вид</span>
+
+<span class="muted" data-i18n="themeSub">
+Изменить внешний вид
+</span>
+
 </div>
 
-<button class="secondary" id="settingsTheme" data-i18n="switch">Переключить</button>
+<button
+class="secondary"
+id="settingsTheme"
+data-i18n="switch">
+Переключить
+</button>
 
 </div>
 
@@ -1125,12 +1645,25 @@ NORTH — набор полезных инструментов в одном м�
 <div class="settingsRow">
 
 <div>
-<b data-i18n="exportTitle">Экспорт</b>
+
+<b data-i18n="exportTitle">
+Экспорт
+</b>
+
 <br>
-<span class="muted" data-i18n="exportSub">Скачать данные NORTH</span>
+
+<span class="muted" data-i18n="exportSub">
+Скачать данные NORTH
+</span>
+
 </div>
 
-<button class="primary" id="exportBtn" data-i18n="export">Экспорт</button>
+<button
+class="primary"
+id="exportBtn"
+data-i18n="export">
+Экспорт
+</button>
 
 </div>
 
@@ -1138,14 +1671,32 @@ NORTH — набор полезных инструментов в одном м�
 <div class="settingsRow">
 
 <div>
-<b data-i18n="importTitle">Импорт</b>
+
+<b data-i18n="importTitle">
+Импорт
+</b>
+
 <br>
-<span class="muted" data-i18n="importSub">Загрузить сохранённые данные</span>
+
+<span class="muted" data-i18n="importSub">
+Загрузить сохранённые данные
+</span>
+
 </div>
 
-<button class="secondary" id="importBtn" data-i18n="import">Импорт</button>
+<button
+class="secondary"
+id="importBtn"
+data-i18n="import">
+Импорт
+</button>
 
-<input type="file" id="importFile" accept=".json" hidden>
+<input
+type="file"
+id="importFile"
+accept=".json"
+hidden
+>
 
 </div>
 
@@ -1161,33 +1712,44 @@ NORTH — набор полезных инструментов в одном м�
 <nav class="bottomNav">
 
 <button class="active" data-mobile="home">
-<b>⌂</b><span data-i18n="home">Главная</span>
+<b>⌂</b>
+<span data-i18n="home">Главная</span>
 </button>
 
 <button data-mobile="tasks">
-<b>✓</b><span data-i18n="tasks">Задачи</span>
+<b>✓</b>
+<span data-i18n="tasks">Задачи</span>
 </button>
 
 <button data-mobile="notes">
-<b>▤</b><span data-i18n="notes">Заметки</span>
+<b>▤</b>
+<span data-i18n="notes">Заметки</span>
 </button>
 
 <button data-mobile="tools">
-<b>⚙</b><span data-i18n="tools">Инструменты</span>
+<b>⚙</b>
+<span data-i18n="tools">Инструменты</span>
 </button>
 
 <button data-mobile="settings">
-<b>☰</b><span data-i18n="settings">Настройки</span>
+<b>☰</b>
+<span data-i18n="settings">Настройки</span>
 </button>
 
 </nav>
 
 
+<!-- COMMAND MODAL -->
+
 <div class="modal" id="commandModal">
 
 <div class="modalBox">
 
-<input class="field" id="commandInput" placeholder="Поиск раздела...">
+<input
+class="field"
+id="commandInput"
+placeholder="Поиск раздела..."
+>
 
 <div class="results" id="results"></div>
 
@@ -1201,1432 +1763,2043 @@ NORTH — набор полезных инструментов в одном м�
 
 <script>
 
-/* =========================
-   DATA
-========================= */
-
-let tasks=JSON.parse(localStorage.getItem("north_tasks")||"[]");
-let notes=JSON.parse(localStorage.getItem("north_notes")||"[]");
-let activity=JSON.parse(localStorage.getItem("north_activity")||"[]");
-
-let soundEnabled=localStorage.getItem("north_sound")!=="off";
-
-let language=localStorage.getItem("north_language")||"ru";
-
-
-/* =========================
-   TRANSLATIONS
-========================= */
-
-const translations={
-
-ru:{
- home:"Главная",
- tasks:"Задачи",
- notes:"Заметки",
- tools:"Инструменты",
- calendar:"Календарь",
- stats:"Статистика",
- activity:"Активность",
- settings:"Настройки",
- theme:"Тема",
- clear:"Очистить данные",
-
- dashboard:"Рабочее пространство",
- dashboardSub:"NORTH — набор полезных инструментов в одном месте.",
-
- activeTasks:"Активные задачи",
- notesCount:"Заметки",
- completed:"Выполнено",
- left:"осталось",
- saved:"сохранено",
- tasksWord:"задач",
- now:"Сейчас",
-
- quick:"Быстрые действия",
- newTask:"+ Задача",
- newNote:"+ Заметка",
- progress:"Прогресс",
- recent:"Последние задачи",
- shortcuts:"Быстрые клавиши",
- search:"Поиск",
- homeWord:"Главная",
-
- tasksTitle:"Задачи",
- tasksSub:"Организуй свои дела.",
- taskPlaceholder:"Что нужно сделать?",
- add:"Добавить",
-
- notesTitle:"Заметки",
- notesSub:"Локальные заметки с автоматическим сохранением.",
- noteTitlePlaceholder:"Название",
- noteTextPlaceholder:"Текст...",
- save:"Сохранить",
-
- toolsTitle:"Инструменты",
- toolsSub:"Таймеры, секундомер, калькулятор и конвертер.",
- focus:"Фокус-таймер",
- stopwatch:"Секундомер",
- start:"Старт",
- reset:"Сброс",
- calculator:"Калькулятор",
- converter:"Конвертер",
-
- calendarTitle:"Календарь",
- calendarSub:"Текущий месяц и сегодняшний день.",
-
- statsTitle:"Статистика",
- statsSub:"Обзор использования NORTH.",
- total:"Всего задач",
- completion:"Выполнение задач",
-
- activityTitle:"Активность",
- activitySub:"История действий на этом устройстве.",
-
- settingsTitle:"Настройки",
- settingsSub:"Настрой NORTH под себя.",
- soundTitle:"Звуки интерфейса",
- soundSub:"Разные звуки для действий",
- language:"Язык",
- languageSub:"Язык интерфейса",
- darkTheme:"Тёмная тема",
- themeSub:"Изменить внешний вид",
- switch:"Переключить",
-
- exportTitle:"Экспорт",
- exportSub:"Скачать данные NORTH",
- export:"Экспорт",
- importTitle:"Импорт",
- importSub:"Загрузить сохранённые данные",
- import:"Импорт",
-
- searchPlaceholder:"Поиск...   Ctrl + K",
- commandPlaceholder:"Поиск раздела...",
-
- taskAdded:"Задача добавлена",
- noteSaved:"Заметка сохранена",
- emptyTask:"Введите задачу",
- emptyNote:"Заметка пустая",
- cleared:"Данные очищены",
- soundOn:"Звуки включены",
- soundOff:"Звуки выключены",
- imported:"Импорт завершён",
- exportReady:"Экспорт готов",
- timerDone:"Фокус завершён",
- noTasks:"Нет задач",
- noActivity:"История пуста.",
- taskDeleted:"Задача удалена",
- noteDeleted:"Заметка удалена"
-},
-
-en:{
- home:"Home",
- tasks:"Tasks",
- notes:"Notes",
- tools:"Tools",
- calendar:"Calendar",
- stats:"Statistics",
- activity:"Activity",
- settings:"Settings",
- theme:"Theme",
- clear:"Clear data",
-
- dashboard:"Workspace",
- dashboardSub:"NORTH — useful tools in one place.",
-
- activeTasks:"Active tasks",
- notesCount:"Notes",
- completed:"Completed",
- left:"remaining",
- saved:"saved",
- tasksWord:"tasks",
- now:"Now",
-
- quick:"Quick actions",
- newTask:"+ Task",
- newNote:"+ Note",
- progress:"Progress",
- recent:"Recent tasks",
- shortcuts:"Shortcuts",
- search:"Search",
- homeWord:"Home",
-
- tasksTitle:"Tasks",
- tasksSub:"Organize your work.",
- taskPlaceholder:"What needs to be done?",
- add:"Add",
-
- notesTitle:"Notes",
- notesSub:"Local notes with automatic saving.",
- noteTitlePlaceholder:"Title",
- noteTextPlaceholder:"Text...",
- save:"Save",
-
- toolsTitle:"Tools",
- toolsSub:"Timers, stopwatch, calculator and converter.",
- focus:"Focus timer",
- stopwatch:"Stopwatch",
- start:"Start",
- reset:"Reset",
- calculator:"Calculator",
- converter:"Converter",
-
- calendarTitle:"Calendar",
- calendarSub:"Current month and today.",
-
- statsTitle:"Statistics",
- statsSub:"NORTH usage overview.",
- total:"Total tasks",
- completion:"Task completion",
-
- activityTitle:"Activity",
- activitySub:"Action history on this device.",
-
- settingsTitle:"Settings",
- settingsSub:"Customize NORTH.",
- soundTitle:"Interface sounds",
- soundSub:"Different sounds for actions",
- language:"Language",
- languageSub:"Interface language",
- darkTheme:"Dark theme",
- themeSub:"Change appearance",
- switch:"Switch",
-
- exportTitle:"Export",
- exportSub:"Download NORTH data",
- export:"Export",
- importTitle:"Import",
- importSub:"Load saved data",
- import:"Import",
-
- searchPlaceholder:"Search...   Ctrl + K",
- commandPlaceholder:"Search section...",
-
- taskAdded:"Task added",
- noteSaved:"Note saved",
- emptyTask:"Enter a task",
- emptyNote:"Note is empty",
- cleared:"Data cleared",
- soundOn:"Sounds enabled",
- soundOff:"Sounds disabled",
- imported:"Import complete",
- exportReady:"Export ready",
- timerDone:"Focus complete",
- noTasks:"No tasks",
- noActivity:"No activity.",
- taskDeleted:"Task deleted",
- noteDeleted:"Note deleted"
-}
-
-};
-
-function t(key){
- return translations[language][key]||key;
-}
-
-
-/* =========================
-   LANGUAGE
-========================= */
-
-function applyLanguage(){
-
-document.documentElement.lang=language;
-
-document.querySelectorAll("[data-i18n]").forEach(el=>{
- el.textContent=t(el.dataset.i18n);
-});
-
-document.querySelectorAll("[data-placeholder]").forEach(el=>{
- el.placeholder=t(el.dataset.placeholder);
-});
-
-$("#globalSearch").placeholder=t("searchPlaceholder");
-$("#commandInput").placeholder=t("commandPlaceholder");
-
-$("#languageSelect").value=language;
-
-renderAll();
-
-}
-
-$("#languageSelect").onchange=e=>{
-
-language=e.target.value;
-
-localStorage.setItem("north_language",language);
-
-applyLanguage();
-
-toast(language==="ru"?"Язык изменён":"Language changed");
-
-sound("switch");
-
-};
-
-applyLanguage();
-
-
-/* =========================
-   SAVE
-========================= */
-
-function save(){
-
-localStorage.setItem("north_tasks",JSON.stringify(tasks));
-localStorage.setItem("north_notes",JSON.stringify(notes));
-localStorage.setItem("north_activity",JSON.stringify(activity));
-
-}
-
-
-/* =========================
-   SOUND ENGINE
-========================= */
-
-let audioContext=null;
-
-function sound(type="click"){
-
-if(!soundEnabled)return;
-
-try{
-
-audioContext ||= new(window.AudioContext||window.webkitAudioContext)();
-
-const now=audioContext.currentTime;
-
-const osc=audioContext.createOscillator();
-const gain=audioContext.createGain();
-
-osc.connect(gain);
-gain.connect(audioContext.destination);
-
-let freq=420;
-let duration=.07;
-
-if(type==="success"){
- freq=720;
- duration=.13;
-}
-
-if(type==="error"){
- freq=150;
- duration=.15;
-}
-
-if(type==="open"){
- freq=520;
- duration=.09;
-}
-
-if(type==="delete"){
- freq=230;
- duration=.11;
-}
-
-if(type==="switch"){
- freq=580;
- duration=.06;
-}
-
-osc.type=type==="delete"?"triangle":"sine";
-osc.frequency.setValueAtTime(freq,now);
-
-gain.gain.setValueAtTime(.0001,now);
-
-gain.gain.exponentialRampToValueAtTime(
- .045,now+.012
-);
-
-gain.gain.exponentialRampToValueAtTime(
- .0001,now+duration
-);
-
-osc.start(now);
-osc.stop(now+duration+.01);
-
-}catch(e){}
-
-}
-
-
-/* =========================
-   RIPPLE
-========================= */
-
-document.addEventListener("click",e=>{
-
-const button=e.target.closest("button");
-
-if(!button)return;
-
-const rect=button.getBoundingClientRect();
-
-const ripple=document.createElement("span");
-
-ripple.className="ripple";
-
-const size=Math.max(rect.width,rect.height);
-
-ripple.style.width=size+"px";
-ripple.style.height=size+"px";
-
-ripple.style.left=
-(e.clientX-rect.left-size/2)+"px";
-
-ripple.style.top=
-(e.clientY-rect.top-size/2)+"px";
-
-button.appendChild(ripple);
-
-setTimeout(()=>ripple.remove(),600);
-
-});
-
-
-/* =========================
-   HELPERS
-========================= */
-
-const $=s=>document.querySelector(s);
-const $$=s=>document.querySelectorAll(s);
+/* =====================================================
+   CORE HELPERS — ДОЛЖНЫ БЫТЬ ОБЪЯВЛЕНЫ ДО ВСЕГО ОСТАЛЬНОГО
+===================================================== */
+
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
 
 function escapeHTML(text){
 
-return String(text).replace(/[&<>"']/g,c=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[c]));
+ return String(text).replace(/[&<>"']/g, char => ({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#039;"
+ }[char]));
 
 }
 
 function toast(text){
 
-const el=$("#toast");
+ const el = $("#toast");
 
-el.textContent=text;
-el.classList.add("show");
+ if(!el) return;
 
-clearTimeout(window.toastTimer);
+ el.textContent = text;
+ el.classList.add("show");
 
-window.toastTimer=setTimeout(()=>{
- el.classList.remove("show");
-},1900);
+ clearTimeout(window.toastTimer);
+
+ window.toastTimer = setTimeout(() => {
+  el.classList.remove("show");
+ },1900);
 
 }
 
 
-/* =========================
+/* =====================================================
+   DATA
+===================================================== */
+
+let tasks = JSON.parse(
+ localStorage.getItem("north_tasks") || "[]"
+);
+
+let notes = JSON.parse(
+ localStorage.getItem("north_notes") || "[]"
+);
+
+let activity = JSON.parse(
+ localStorage.getItem("north_activity") || "[]"
+);
+
+let soundEnabled =
+ localStorage.getItem("north_sound") !== "off";
+
+let language =
+ localStorage.getItem("north_language") || "ru";
+
+
+/* =====================================================
+   TRANSLATIONS
+===================================================== */
+
+const translations = {
+
+ru:{
+
+home:"Главная",
+tasks:"Задачи",
+notes:"Заметки",
+tools:"Инструменты",
+calendar:"Календарь",
+stats:"Статистика",
+activity:"Активность",
+settings:"Настройки",
+theme:"Тема",
+clear:"Очистить данные",
+
+dashboard:"Рабочее пространство",
+dashboardSub:"NORTH — набор полезных инструментов в одном месте.",
+
+activeTasks:"Активные задачи",
+notesCount:"Заметки",
+completed:"Выполнено",
+left:"осталось",
+saved:"сохранено",
+tasksWord:"задач",
+now:"Сейчас",
+
+quick:"Быстрые действия",
+newTask:"+ Задача",
+newNote:"+ Заметка",
+progress:"Прогресс",
+recent:"Последние задачи",
+shortcuts:"Быстрые клавиши",
+search:"Поиск",
+homeWord:"Главная",
+
+tasksTitle:"Задачи",
+tasksSub:"Организуй свои дела.",
+taskPlaceholder:"Что нужно сделать?",
+add:"Добавить",
+
+notesTitle:"Заметки",
+notesSub:"Локальные заметки с автоматическим сохранением.",
+noteTitlePlaceholder:"Название",
+noteTextPlaceholder:"Текст...",
+save:"Сохранить",
+
+toolsTitle:"Инструменты",
+toolsSub:"Таймеры, секундомер, калькулятор и конвертер.",
+focus:"Фокус-таймер",
+stopwatch:"Секундомер",
+start:"Старт",
+reset:"Сброс",
+calculator:"Калькулятор",
+converter:"Конвертер",
+
+calendarTitle:"Календарь",
+calendarSub:"Текущий месяц и сегодняшний день.",
+
+statsTitle:"Статистика",
+statsSub:"Обзор использования NORTH.",
+total:"Всего задач",
+completion:"Выполнение задач",
+
+activityTitle:"Активность",
+activitySub:"История действий на этом устройстве.",
+
+settingsTitle:"Настройки",
+settingsSub:"Настрой NORTH под себя.",
+soundTitle:"Звуки интерфейса",
+soundSub:"Разные звуки для действий",
+language:"Язык",
+languageSub:"Язык интерфейса",
+darkTheme:"Тёмная тема",
+themeSub:"Изменить внешний вид",
+switch:"Переключить",
+
+exportTitle:"Экспорт",
+exportSub:"Скачать данные NORTH",
+export:"Экспорт",
+
+importTitle:"Импорт",
+importSub:"Загрузить сохранённые данные",
+import:"Импорт",
+
+searchPlaceholder:"Поиск...   Ctrl + K",
+commandPlaceholder:"Поиск раздела...",
+
+taskAdded:"Задача добавлена",
+noteSaved:"Заметка сохранена",
+emptyTask:"Введите задачу",
+emptyNote:"Заметка пустая",
+cleared:"Данные очищены",
+soundOn:"Звуки включены",
+soundOff:"Звуки выключены",
+imported:"Импорт завершён",
+exportReady:"Экспорт готов",
+timerDone:"Фокус завершён",
+noTasks:"Нет задач",
+noActivity:"История пуста.",
+taskDeleted:"Задача удалена",
+noteDeleted:"Заметка удалена"
+
+},
+
+en:{
+
+home:"Home",
+tasks:"Tasks",
+notes:"Notes",
+tools:"Tools",
+calendar:"Calendar",
+stats:"Statistics",
+activity:"Activity",
+settings:"Settings",
+theme:"Theme",
+clear:"Clear data",
+
+dashboard:"Workspace",
+dashboardSub:"NORTH — useful tools in one place.",
+
+activeTasks:"Active tasks",
+notesCount:"Notes",
+completed:"Completed",
+left:"remaining",
+saved:"saved",
+tasksWord:"tasks",
+now:"Now",
+
+quick:"Quick actions",
+newTask:"+ Task",
+newNote:"+ Note",
+progress:"Progress",
+recent:"Recent tasks",
+shortcuts:"Shortcuts",
+search:"Search",
+homeWord:"Home",
+
+tasksTitle:"Tasks",
+tasksSub:"Organize your work.",
+taskPlaceholder:"What needs to be done?",
+add:"Add",
+
+notesTitle:"Notes",
+notesSub:"Local notes with automatic saving.",
+noteTitlePlaceholder:"Title",
+noteTextPlaceholder:"Text...",
+save:"Save",
+
+toolsTitle:"Tools",
+toolsSub:"Timers, stopwatch, calculator and converter.",
+focus:"Focus timer",
+stopwatch:"Stopwatch",
+start:"Start",
+reset:"Reset",
+calculator:"Calculator",
+converter:"Converter",
+
+calendarTitle:"Calendar",
+calendarSub:"Current month and today.",
+
+statsTitle:"Statistics",
+statsSub:"NORTH usage overview.",
+total:"Total tasks",
+completion:"Task completion",
+
+activityTitle:"Activity",
+activitySub:"Action history on this device.",
+
+settingsTitle:"Settings",
+settingsSub:"Customize NORTH.",
+soundTitle:"Interface sounds",
+soundSub:"Different sounds for actions",
+language:"Language",
+languageSub:"Interface language",
+darkTheme:"Dark theme",
+themeSub:"Change appearance",
+switch:"Switch",
+
+exportTitle:"Export",
+exportSub:"Download NORTH data",
+export:"Export",
+
+importTitle:"Import",
+importSub:"Load saved data",
+import:"Import",
+
+searchPlaceholder:"Search...   Ctrl + K",
+commandPlaceholder:"Search section...",
+
+taskAdded:"Task added",
+noteSaved:"Note saved",
+emptyTask:"Enter a task",
+emptyNote:"Note is empty",
+cleared:"Data cleared",
+soundOn:"Sounds enabled",
+soundOff:"Sounds disabled",
+imported:"Import complete",
+exportReady:"Export ready",
+timerDone:"Focus complete",
+noTasks:"No tasks",
+noActivity:"No activity.",
+taskDeleted:"Task deleted",
+noteDeleted:"Note deleted"
+
+}
+
+};
+
+function t(key){
+
+ return (
+  translations[language] &&
+  translations[language][key]
+ ) || key;
+
+}
+
+
+/* =====================================================
+   AUDIO
+===================================================== */
+
+let audioContext = null;
+
+function sound(type="click"){
+
+ if(!soundEnabled) return;
+
+ try{
+
+  if(!audioContext){
+
+   audioContext =
+   new (window.AudioContext ||
+   window.webkitAudioContext)();
+
+  }
+
+  if(audioContext.state==="suspended"){
+   audioContext.resume();
+  }
+
+  const now = audioContext.currentTime;
+
+  const osc = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  osc.connect(gain);
+  gain.connect(audioContext.destination);
+
+  let frequency = 420;
+  let duration = .07;
+
+  if(type==="success"){
+   frequency=720;
+   duration=.13;
+  }
+
+  if(type==="error"){
+   frequency=150;
+   duration=.15;
+  }
+
+  if(type==="open"){
+   frequency=520;
+   duration=.09;
+  }
+
+  if(type==="delete"){
+   frequency=230;
+   duration=.11;
+  }
+
+  if(type==="switch"){
+   frequency=580;
+   duration=.06;
+  }
+
+  osc.type =
+   type==="delete"
+   ? "triangle"
+   : "sine";
+
+  osc.frequency.setValueAtTime(
+   frequency,
+   now
+  );
+
+  gain.gain.setValueAtTime(
+   .0001,
+   now
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+   .045,
+   now+.012
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+   .0001,
+   now+duration
+  );
+
+  osc.start(now);
+
+  osc.stop(
+   now+duration+.01
+  );
+
+ }catch(error){}
+
+}
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+function applyLanguage(){
+
+ document.documentElement.lang = language;
+
+ $$("[data-i18n]").forEach(element => {
+
+  element.textContent =
+   t(element.dataset.i18n);
+
+ });
+
+ $$("[data-placeholder]").forEach(element => {
+
+  element.placeholder =
+   t(element.dataset.placeholder);
+
+ });
+
+ $("#globalSearch").placeholder =
+  t("searchPlaceholder");
+
+ $("#commandInput").placeholder =
+  t("commandPlaceholder");
+
+ $("#languageSelect").value =
+  language;
+
+ renderAll();
+
+}
+
+$("#languageSelect").addEventListener(
+ "change",
+ function(){
+
+  language=this.value;
+
+  localStorage.setItem(
+   "north_language",
+   language
+  );
+
+  applyLanguage();
+
+  toast(
+   language==="ru"
+   ? "Язык изменён"
+   : "Language changed"
+  );
+
+  sound("switch");
+
+ }
+);
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function save(){
+
+ localStorage.setItem(
+  "north_tasks",
+  JSON.stringify(tasks)
+ );
+
+ localStorage.setItem(
+  "north_notes",
+  JSON.stringify(notes)
+ );
+
+ localStorage.setItem(
+  "north_activity",
+  JSON.stringify(activity)
+ );
+
+}
+
+
+/* =====================================================
+   ACTIVITY
+===================================================== */
+
+function addActivity(text){
+
+ activity.unshift({
+
+  text:text,
+
+  time:new Date().toLocaleTimeString(
+   language==="ru"
+   ? "ru-RU"
+   : "en-US",
+   {
+    hour:"2-digit",
+    minute:"2-digit"
+   }
+  )
+
+ });
+
+ activity=activity.slice(0,30);
+
+ save();
+
+}
+
+
+/* =====================================================
+   RIPPLE
+===================================================== */
+
+document.addEventListener("click",function(e){
+
+ const button=e.target.closest("button");
+
+ if(!button) return;
+
+ const rect=button.getBoundingClientRect();
+
+ const ripple=document.createElement("span");
+
+ ripple.className="ripple";
+
+ const size=Math.max(
+  rect.width,
+  rect.height
+ );
+
+ ripple.style.width=size+"px";
+ ripple.style.height=size+"px";
+
+ ripple.style.left=
+  (e.clientX-rect.left-size/2)+"px";
+
+ ripple.style.top=
+  (e.clientY-rect.top-size/2)+"px";
+
+ button.appendChild(ripple);
+
+ setTimeout(()=>{
+  ripple.remove();
+ },600);
+
+});
+
+
+/* =====================================================
    NAVIGATION
-========================= */
+===================================================== */
 
 function showView(id){
 
-$(".view.active")?.classList.remove("active");
+ const target=$("#"+id);
 
-$("#"+id)?.classList.add("active");
+ if(!target) return;
 
-$$(".nav button").forEach(b=>{
- b.classList.toggle("active",b.dataset.view===id);
-});
+ $$(".view").forEach(view=>{
+  view.classList.remove("active");
+ });
 
-$$(".bottomNav button").forEach(b=>{
- b.classList.toggle("active",b.dataset.mobile===id);
-});
+ target.classList.add("active");
 
-renderAll();
+ $$(".nav button").forEach(button=>{
+  button.classList.toggle(
+   "active",
+   button.dataset.view===id
+  );
+ });
 
-sound("open");
+ $$(".bottomNav button").forEach(button=>{
+  button.classList.toggle(
+   "active",
+   button.dataset.mobile===id
+  );
+ });
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+ sound("open");
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
 
 }
 
 $$(".nav button").forEach(button=>{
- button.onclick=()=>showView(button.dataset.view);
+
+ button.addEventListener(
+  "click",
+  ()=>showView(button.dataset.view)
+ );
+
 });
 
 $$(".bottomNav button").forEach(button=>{
- button.onclick=()=>showView(button.dataset.mobile);
+
+ button.addEventListener(
+  "click",
+  ()=>showView(button.dataset.mobile)
+ );
+
 });
 
 
-/* =========================
+/* =====================================================
    TASKS
-========================= */
+===================================================== */
 
 function renderTasks(){
 
-const list=$("#taskList");
+ const list=$("#taskList");
 
-list.innerHTML="";
+ list.innerHTML="";
 
-tasks.forEach((task,index)=>{
+ tasks.forEach((task,index)=>{
 
-const el=document.createElement("div");
+  const element=document.createElement("div");
 
-el.className="task "+(task.done?"done":"");
+  element.className =
+   "task "+
+   (task.done ? "done" : "");
 
-el.innerHTML=`
+  element.innerHTML=`
 
-<input type="checkbox" ${task.done?"checked":""}>
-<span>${escapeHTML(task.text)}</span>
-<button class="delete">✕</button>
+   <input
+    type="checkbox"
+    ${task.done ? "checked" : ""}
+   >
 
-`;
+   <span>
+    ${escapeHTML(task.text)}
+   </span>
 
-el.querySelector("input").onchange=()=>{
+   <button class="delete">
+    ✕
+   </button>
 
-task.done=!task.done;
+  `;
 
-save();
+  element
+  .querySelector("input")
+  .addEventListener("change",function(){
 
-sound(task.done?"success":"switch");
+   task.done=this.checked;
 
-renderAll();
+   save();
 
-};
+   sound(
+    task.done
+    ? "success"
+    : "switch"
+   );
 
-el.querySelector(".delete").onclick=()=>{
+   renderAll();
 
-tasks.splice(index,1);
+  });
 
-save();
+  element
+  .querySelector(".delete")
+  .addEventListener("click",function(){
 
-sound("delete");
+   tasks.splice(index,1);
 
-toast(t("taskDeleted"));
+   addActivity(t("taskDeleted"));
 
-renderAll();
+   save();
 
-};
+   sound("delete");
 
-list.appendChild(el);
+   toast(t("taskDeleted"));
 
-});
+   renderAll();
 
-const active=tasks.filter(x=>!x.done).length;
-const done=tasks.filter(x=>x.done).length;
+  });
 
-$("#taskStat").textContent=active;
-$("#doneStat").textContent=done;
+  list.appendChild(element);
 
-const percent=tasks.length?done/tasks.length*100:0;
+ });
 
-$("#progressBar").style.width=percent+"%";
 
-$("#progressText").textContent=
-tasks.length
-?`${done} / ${tasks.length} (${Math.round(percent)}%)`
-:t("noTasks");
+ const active=
+  tasks.filter(task=>!task.done).length;
 
-const home=$("#homeTasks");
+ const done=
+  tasks.filter(task=>task.done).length;
 
-home.innerHTML="";
 
-tasks.slice(0,5).forEach(task=>{
+ $("#taskStat").textContent=active;
+ $("#doneStat").textContent=done;
 
-const row=document.createElement("div");
 
-row.className="row";
+ const percent=
+  tasks.length
+  ? done/tasks.length*100
+  : 0;
 
-row.innerHTML=`
-<span>${task.done?"✓":"○"} ${escapeHTML(task.text)}</span>
-<span class="tag">${task.done?"✓":"..."}</span>
-`;
 
-home.appendChild(row);
+ $("#progressBar").style.width=
+  percent+"%";
 
-});
 
-if(!tasks.length){
- home.innerHTML=`<span class="muted">${t("noTasks")}</span>`;
+ $("#progressText").textContent=
+  tasks.length
+  ? `${done} / ${tasks.length} (${Math.round(percent)}%)`
+  : t("noTasks");
+
+
+ const home=$("#homeTasks");
+
+ home.innerHTML="";
+
+
+ tasks.slice(0,5).forEach(task=>{
+
+  const row=document.createElement("div");
+
+  row.className="row";
+
+  row.innerHTML=`
+
+   <span>
+    ${task.done?"✓":"○"}
+    ${escapeHTML(task.text)}
+   </span>
+
+   <span class="tag">
+    ${task.done?"✓":"..."}
+   </span>
+
+  `;
+
+  home.appendChild(row);
+
+ });
+
+
+ if(!tasks.length){
+
+  home.innerHTML=
+   `<span class="muted">${t("noTasks")}</span>`;
+
+ }
+
 }
 
-}
 
-$("#addTask").onclick=()=>{
+$("#addTask").addEventListener(
+ "click",
+ function(){
 
-const input=$("#taskInput");
-const value=input.value.trim();
+  const input=$("#taskInput");
 
-if(!value){
+  const value=input.value.trim();
 
-toast(t("emptyTask"));
-sound("error");
-return;
+  if(!value){
 
-}
+   toast(t("emptyTask"));
+   sound("error");
 
-tasks.unshift({
-text:value,
-done:false
-});
+   return;
 
-input.value="";
+  }
 
-save();
+  tasks.unshift({
 
-toast(t("taskAdded"));
-sound("success");
+   text:value,
 
-renderAll();
+   done:false
 
-};
+  });
 
-$("#taskInput").onkeydown=e=>{
-if(e.key==="Enter")$("#addTask").click();
-};
+  input.value="";
+
+  addActivity(t("taskAdded"));
+
+  save();
+
+  toast(t("taskAdded"));
+
+  sound("success");
+
+  renderAll();
+
+ }
+);
 
 
-/* =========================
+$("#taskInput").addEventListener(
+ "keydown",
+ function(e){
+
+  if(e.key==="Enter"){
+   $("#addTask").click();
+  }
+
+ }
+);
+
+
+/* =====================================================
    NOTES
-========================= */
+===================================================== */
 
 function renderNotes(){
 
-const list=$("#noteList");
+ const list=$("#noteList");
 
-list.innerHTML="";
+ list.innerHTML="";
 
-notes.forEach((note,index)=>{
+ notes.forEach((note,index)=>{
 
-const el=document.createElement("div");
+  const element=document.createElement("div");
 
-el.className="note";
+  element.className="note";
 
-el.innerHTML=`
+  element.innerHTML=`
 
-<div class="noteTitle">
-${escapeHTML(note.title||"—")}
-</div>
+   <div class="noteTitle">
+    ${escapeHTML(note.title || "—")}
+   </div>
 
-<div class="muted">
-${escapeHTML(note.text)}
-</div>
+   <div class="muted">
+    ${escapeHTML(note.text)}
+   </div>
 
-<br>
+   <br>
 
-<button class="secondary deleteNote">
-✕
-</button>
+   <button class="secondary deleteNote">
+    ✕
+   </button>
 
-`;
+  `;
 
-el.querySelector(".deleteNote").onclick=()=>{
+  element
+  .querySelector(".deleteNote")
+  .addEventListener("click",function(){
 
-notes.splice(index,1);
+   notes.splice(index,1);
 
-save();
+   addActivity(t("noteDeleted"));
 
-toast(t("noteDeleted"));
-sound("delete");
+   save();
 
-renderAll();
+   toast(t("noteDeleted"));
 
-};
+   sound("delete");
 
-list.appendChild(el);
+   renderAll();
 
-});
+  });
 
-$("#noteStat").textContent=notes.length;
+  list.appendChild(element);
 
-}
+ });
 
-$("#addNote").onclick=()=>{
-
-const title=$("#noteTitle").value.trim();
-const text=$("#noteText").value.trim();
-
-if(!title&&!text){
-
-toast(t("emptyNote"));
-sound("error");
-return;
+ $("#noteStat").textContent=notes.length;
 
 }
 
-notes.unshift({title,text});
 
-$("#noteTitle").value="";
-$("#noteText").value="";
+$("#addNote").addEventListener(
+ "click",
+ function(){
 
-save();
+  const title=$("#noteTitle")
+   .value.trim();
 
-toast(t("noteSaved"));
-sound("success");
+  const text=$("#noteText")
+   .value.trim();
 
-renderAll();
+  if(!title&&!text){
 
-};
+   toast(t("emptyNote"));
+   sound("error");
+
+   return;
+
+  }
+
+  notes.unshift({
+   title:title,
+   text:text
+  });
+
+  $("#noteTitle").value="";
+  $("#noteText").value="";
+
+  addActivity(t("noteSaved"));
+
+  save();
+
+  toast(t("noteSaved"));
+
+  sound("success");
+
+  renderAll();
+
+ }
+);
 
 
-/* =========================
+/* =====================================================
    CLOCK
-========================= */
+===================================================== */
 
 function updateClock(){
 
-const now=new Date();
+ const now=new Date();
 
-$("#clock").textContent=
-now.toLocaleTimeString(
-language==="ru"?"ru-RU":"en-US",
-{
-hour:"2-digit",
-minute:"2-digit"
-});
+ $("#clock").textContent=
+  now.toLocaleTimeString(
+   language==="ru"
+   ? "ru-RU"
+   : "en-US",
+   {
+    hour:"2-digit",
+    minute:"2-digit"
+   }
+  );
 
-$("#date").textContent=
-now.toLocaleDateString(
-language==="ru"?"ru-RU":"en-US",
-{
-day:"numeric",
-month:"long"
-});
+ $("#date").textContent=
+  now.toLocaleDateString(
+   language==="ru"
+   ? "ru-RU"
+   : "en-US",
+   {
+    day:"numeric",
+    month:"long"
+   }
+  );
 
 }
 
 setInterval(updateClock,1000);
-updateClock();
 
 
-/* =========================
+/* =====================================================
    THEME
-========================= */
+===================================================== */
 
 function toggleTheme(){
 
-document.body.classList.toggle("light");
+ document.body.classList.toggle("light");
 
-localStorage.setItem(
-"north_theme",
-document.body.classList.contains("light")
-?"light":"dark"
-);
+ localStorage.setItem(
+  "north_theme",
+  document.body.classList.contains("light")
+  ? "light"
+  : "dark"
+ );
 
-sound("switch");
+ sound("switch");
 
 }
 
-if(localStorage.getItem("north_theme")==="light"){
+
+$("#themeBtn").addEventListener(
+ "click",
+ toggleTheme
+);
+
+$("#settingsTheme").addEventListener(
+ "click",
+ toggleTheme
+);
+
+
+if(
+ localStorage.getItem("north_theme")
+ ===
+ "light"
+){
+
  document.body.classList.add("light");
+
 }
 
-$("#themeBtn").onclick=toggleTheme;
-$("#settingsTheme").onclick=toggleTheme;
 
-
-/* =========================
+/* =====================================================
    SOUND SWITCH
-========================= */
+===================================================== */
 
-$("#soundSwitch").onclick=()=>{
+function updateSoundButton(){
 
-soundEnabled=!soundEnabled;
+ $("#soundSwitch")
+  .classList.toggle(
+   "on",
+   soundEnabled
+  );
 
-localStorage.setItem(
-"north_sound",
-soundEnabled?"on":"off"
+}
+
+$("#soundSwitch").addEventListener(
+ "click",
+ function(){
+
+  soundEnabled=!soundEnabled;
+
+  localStorage.setItem(
+   "north_sound",
+   soundEnabled
+   ? "on"
+   : "off"
+  );
+
+  updateSoundButton();
+
+  toast(
+   soundEnabled
+   ? t("soundOn")
+   : t("soundOff")
+  );
+
+  if(soundEnabled){
+   sound("success");
+  }
+
+ }
 );
 
-$("#soundSwitch").classList.toggle("on",soundEnabled);
 
-toast(soundEnabled?t("soundOn"):t("soundOff"));
-
-if(soundEnabled)sound("success");
-
-};
-
-
-/* =========================
+/* =====================================================
    CLEAR
-========================= */
+===================================================== */
 
-$("#clearBtn").onclick=()=>{
+$("#clearBtn").addEventListener(
+ "click",
+ function(){
 
-if(!confirm(
-language==="ru"
-?"Удалить все задачи, заметки и историю?"
-:"Delete all tasks, notes and history?"
-))return;
+  const question=
+   language==="ru"
+   ? "Удалить все задачи, заметки и историю?"
+   : "Delete all tasks, notes and history?";
 
-tasks=[];
-notes=[];
-activity=[];
+  if(!confirm(question)){
+   return;
+  }
 
-save();
+  tasks=[];
+  notes=[];
+  activity=[];
 
-sound("delete");
+  save();
 
-toast(t("cleared"));
+  sound("delete");
 
-renderAll();
+  toast(t("cleared"));
 
-};
+  renderAll();
+
+ }
+);
 
 
-/* =========================
+/* =====================================================
    FOCUS TIMER
-========================= */
+===================================================== */
 
 let timerSeconds=1500;
 let timerRunning=false;
-let timerInterval;
+let timerInterval=null;
 
 function drawTimer(){
 
-const m=Math.floor(timerSeconds/60);
-const s=timerSeconds%60;
+ const minutes=
+  Math.floor(timerSeconds/60);
 
-$("#timer").textContent=
-String(m).padStart(2,"0")+":"+
-String(s).padStart(2,"0");
+ const seconds=
+  timerSeconds%60;
 
-}
-
-$("#timerStart").onclick=()=>{
-
-if(timerRunning){
-
-timerRunning=false;
-clearInterval(timerInterval);
-$("#timerStart").textContent=t("start");
-sound("switch");
-return;
+ $("#timer").textContent=
+  String(minutes).padStart(2,"0")
+  +":"
+  +String(seconds).padStart(2,"0");
 
 }
 
-timerRunning=true;
-$("#timerStart").textContent="Pause";
 
-sound("open");
+$("#timerStart").addEventListener(
+ "click",
+ function(){
 
-timerInterval=setInterval(()=>{
+  if(timerRunning){
 
-if(timerSeconds>0){
+   timerRunning=false;
 
-timerSeconds--;
-drawTimer();
+   clearInterval(timerInterval);
 
-}else{
+   this.textContent=t("start");
 
-timerRunning=false;
-clearInterval(timerInterval);
+   sound("switch");
 
-$("#timerStart").textContent=t("start");
+   return;
 
-toast(t("timerDone"));
-sound("success");
+  }
 
-}
+  timerRunning=true;
 
-},1000);
+  this.textContent=
+   language==="ru"
+   ? "Пауза"
+   : "Pause";
 
-};
+  sound("open");
 
-$("#timerReset").onclick=()=>{
+  timerInterval=setInterval(()=>{
 
-timerSeconds=1500;
-timerRunning=false;
+   if(timerSeconds>0){
 
-clearInterval(timerInterval);
+    timerSeconds--;
 
-$("#timerStart").textContent=t("start");
+    drawTimer();
 
-drawTimer();
-sound("switch");
+   }else{
 
-};
+    timerRunning=false;
+
+    clearInterval(timerInterval);
+
+    $("#timerStart").textContent=
+     t("start");
+
+    toast(t("timerDone"));
+
+    sound("success");
+
+   }
+
+  },1000);
+
+ }
+);
 
 
-/* =========================
+$("#timerReset").addEventListener(
+ "click",
+ function(){
+
+  timerSeconds=1500;
+
+  timerRunning=false;
+
+  clearInterval(timerInterval);
+
+  $("#timerStart").textContent=
+   t("start");
+
+  drawTimer();
+
+  sound("switch");
+
+ }
+);
+
+
+/* =====================================================
    STOPWATCH
-========================= */
+===================================================== */
 
 let stopwatch=0;
 let stopwatchRunning=false;
-let stopwatchInterval;
+let stopwatchInterval=null;
 
 function drawStopwatch(){
 
-const m=Math.floor(stopwatch/60000);
-const s=Math.floor(stopwatch/1000)%60;
-const ms=Math.floor(stopwatch%1000/100);
+ const minutes=
+  Math.floor(stopwatch/60000);
 
-$("#stopwatch").textContent=
-String(m).padStart(2,"0")+":"+
-String(s).padStart(2,"0")+"."+ms;
+ const seconds=
+  Math.floor(stopwatch/1000)%60;
 
-}
+ const milliseconds=
+  Math.floor(
+   stopwatch%1000/100
+  );
 
-$("#swStart").onclick=()=>{
-
-if(stopwatchRunning){
-
-stopwatchRunning=false;
-clearInterval(stopwatchInterval);
-$("#swStart").textContent=t("start");
-sound("switch");
-
-return;
+ $("#stopwatch").textContent=
+  String(minutes).padStart(2,"0")
+  +":"
+  +String(seconds).padStart(2,"0")
+  +"."
+  +milliseconds;
 
 }
 
-stopwatchRunning=true;
-$("#swStart").textContent="Pause";
 
-sound("open");
+$("#swStart").addEventListener(
+ "click",
+ function(){
 
-let last=Date.now();
+  if(stopwatchRunning){
 
-stopwatchInterval=setInterval(()=>{
+   stopwatchRunning=false;
 
-const now=Date.now();
+   clearInterval(stopwatchInterval);
 
-stopwatch+=now-last;
-last=now;
+   this.textContent=t("start");
 
-drawStopwatch();
+   sound("switch");
 
-},100);
+   return;
 
-};
+  }
 
-$("#swReset").onclick=()=>{
+  stopwatchRunning=true;
 
-stopwatch=0;
-stopwatchRunning=false;
+  this.textContent=
+   language==="ru"
+   ? "Пауза"
+   : "Pause";
 
-clearInterval(stopwatchInterval);
+  sound("open");
 
-$("#swStart").textContent=t("start");
+  let last=Date.now();
 
-drawStopwatch();
-sound("switch");
+  stopwatchInterval=setInterval(()=>{
 
-};
+   const now=Date.now();
+
+   stopwatch+=now-last;
+
+   last=now;
+
+   drawStopwatch();
+
+  },100);
+
+ }
+);
 
 
-/* =========================
+$("#swReset").addEventListener(
+ "click",
+ function(){
+
+  stopwatch=0;
+
+  stopwatchRunning=false;
+
+  clearInterval(stopwatchInterval);
+
+  $("#swStart").textContent=
+   t("start");
+
+  drawStopwatch();
+
+  sound("switch");
+
+ }
+);
+
+
+/* =====================================================
    CALCULATOR
-========================= */
+===================================================== */
 
 let expression="";
 
 $$(".calc button").forEach(button=>{
 
-button.onclick=()=>{
+ button.addEventListener(
+  "click",
+  function(){
 
-const c=button.dataset.c;
+   const c=this.dataset.c;
 
-if(c==="C"){
- expression="";
- sound("delete");
-}
+   if(c==="C"){
 
-else if(c==="="){
+    expression="";
 
-try{
+    sound("delete");
 
-if(!/^[0-9+\-*/(). ]+$/.test(expression))
- throw new Error();
+   }
 
-expression=String(Function(
-"return "+expression
-)());
+   else if(c==="="){
 
-sound("success");
+    try{
 
-}catch{
+     if(
+      !/^[0-9+\-*/(). ]+$/
+      .test(expression)
+     ){
 
-expression="Error";
-sound("error");
+      throw new Error();
 
-}
+     }
 
-}
+     expression=String(
+      Function(
+       "return "+expression
+      )()
+     );
 
-else{
+     sound("success");
 
-expression+=c;
-sound("click");
+    }catch(error){
 
-}
+     expression="Error";
 
-$("#calcDisplay").value=expression;
+     sound("error");
 
-};
+    }
+
+   }
+
+   else{
+
+    if(expression==="Error"){
+     expression="";
+    }
+
+    expression+=c;
+
+    sound("click");
+
+   }
+
+   $("#calcDisplay").value=
+    expression;
+
+  }
+ );
 
 });
 
 
-/* =========================
+/* =====================================================
    CONVERTER
-========================= */
+===================================================== */
 
 function convert(){
 
-const value=parseFloat($("#convValue").value)||0;
-const type=$("#convType").value;
+ const value=
+  parseFloat($("#convValue").value)
+  ||0;
 
-let result=0;
+ const type=$("#convType").value;
 
-if(type==="km-mi")result=value*.621371;
-if(type==="mi-km")result=value/.621371;
-if(type==="c-f")result=value*9/5+32;
-if(type==="f-c")result=(value-32)*5/9;
-if(type==="kg-lb")result=value*2.20462;
-if(type==="lb-kg")result=value/2.20462;
+ let result=0;
 
-$("#convResult").textContent=
-Number(result.toFixed(4))
-.toLocaleString(language==="ru"?"ru-RU":"en-US");
+ if(type==="km-mi"){
+  result=value*.621371;
+ }
+
+ if(type==="mi-km"){
+  result=value/.621371;
+ }
+
+ if(type==="c-f"){
+  result=value*9/5+32;
+ }
+
+ if(type==="f-c"){
+  result=(value-32)*5/9;
+ }
+
+ if(type==="kg-lb"){
+  result=value*2.20462;
+ }
+
+ if(type==="lb-kg"){
+  result=value/2.20462;
+ }
+
+ $("#convResult").textContent=
+  Number(result.toFixed(4))
+  .toLocaleString(
+   language==="ru"
+   ? "ru-RU"
+   : "en-US"
+  );
 
 }
 
-$("#convValue").oninput=convert;
-$("#convType").onchange=()=>{
- convert();
- sound("switch");
-};
 
-convert();
+$("#convValue").addEventListener(
+ "input",
+ convert
+);
+
+$("#convType").addEventListener(
+ "change",
+ function(){
+
+  convert();
+
+  sound("switch");
+
+ }
+);
 
 
-/* =========================
+/* =====================================================
    CALENDAR
-========================= */
+===================================================== */
 
 let calendarDate=new Date();
 
 function renderCalendar(){
 
-const year=calendarDate.getFullYear();
-const month=calendarDate.getMonth();
+ const year=
+  calendarDate.getFullYear();
 
-const first=new Date(year,month,1);
-const last=new Date(year,month+1,0);
+ const month=
+  calendarDate.getMonth();
 
-const namesRu=[
-"Январь","Февраль","Март","Апрель",
-"Май","Июнь","Июль","Август",
-"Сентябрь","Октябрь","Ноябрь","Декабрь"
-];
+ const first=
+  new Date(year,month,1);
 
-const namesEn=[
-"January","February","March","April",
-"May","June","July","August",
-"September","October","November","December"
-];
+ const last=
+  new Date(year,month+1,0);
 
-$("#calendarTitleText").textContent=
-(language==="ru"?namesRu:namesEn)[month]+" "+year;
+ const ruMonths=[
+  "Январь","Февраль","Март",
+  "Апрель","Май","Июнь",
+  "Июль","Август","Сентябрь",
+  "Октябрь","Ноябрь","Декабрь"
+ ];
 
-const grid=$("#calendarGrid");
+ const enMonths=[
+  "January","February","March",
+  "April","May","June",
+  "July","August","September",
+  "October","November","December"
+ ];
 
-grid.innerHTML="";
+ $("#calendarTitleText").textContent=
+  (language==="ru"
+  ?ruMonths
+  :enMonths)[month]
+  +" "
+  +year;
 
-const days=language==="ru"
-?["Пн","Вт","Ср","Чт","Пт","Сб","Вс"]
-:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 
-days.forEach(day=>{
+ const grid=$("#calendarGrid");
 
-const el=document.createElement("div");
+ grid.innerHTML="";
 
-el.className="day";
-el.textContent=day;
 
-grid.appendChild(el);
+ const days=
+  language==="ru"
+  ?["Пн","Вт","Ср","Чт","Пт","Сб","Вс"]
+  :["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 
-});
 
-let start=first.getDay();
+ days.forEach(day=>{
 
-start=start===0?6:start-1;
+  const element=
+   document.createElement("div");
 
-for(let i=0;i<start;i++){
+  element.className="day";
 
-const empty=document.createElement("div");
+  element.textContent=day;
 
-empty.className="day empty";
+  grid.appendChild(element);
 
-grid.appendChild(empty);
+ });
+
+
+ let start=first.getDay();
+
+ start=start===0?6:start-1;
+
+
+ for(let i=0;i<start;i++){
+
+  const empty=
+   document.createElement("div");
+
+  empty.className="day empty";
+
+  grid.appendChild(empty);
+
+ }
+
+
+ const today=new Date();
+
+
+ for(
+  let day=1;
+  day<=last.getDate();
+  day++
+ ){
+
+  const element=
+   document.createElement("div");
+
+  element.className="day";
+
+  element.textContent=day;
+
+
+  if(
+   day===today.getDate() &&
+   month===today.getMonth() &&
+   year===today.getFullYear()
+  ){
+
+   element.classList.add("today");
+
+  }
+
+
+  grid.appendChild(element);
+
+ }
 
 }
 
-const today=new Date();
 
-for(let day=1;day<=last.getDate();day++){
+$("#prevMonth").addEventListener(
+ "click",
+ function(){
 
-const el=document.createElement("div");
+  calendarDate.setMonth(
+   calendarDate.getMonth()-1
+  );
 
-el.className="day";
-el.textContent=day;
+  renderCalendar();
 
-if(
-day===today.getDate() &&
-month===today.getMonth() &&
-year===today.getFullYear()
-){
+  sound("switch");
 
-el.classList.add("today");
-
-}
-
-grid.appendChild(el);
-
-}
-
-}
-
-$("#prevMonth").onclick=()=>{
-
-calendarDate.setMonth(calendarDate.getMonth()-1);
-
-renderCalendar();
-sound("switch");
-
-};
-
-$("#nextMonth").onclick=()=>{
-
-calendarDate.setMonth(calendarDate.getMonth()+1);
-
-renderCalendar();
-sound("switch");
-
-};
+ }
+);
 
 
-/* =========================
+$("#nextMonth").addEventListener(
+ "click",
+ function(){
+
+  calendarDate.setMonth(
+   calendarDate.getMonth()+1
+  );
+
+  renderCalendar();
+
+  sound("switch");
+
+ }
+);
+
+
+/* =====================================================
    STATS
-========================= */
+===================================================== */
 
 function renderStats(){
 
-const total=tasks.length;
-const done=tasks.filter(x=>x.done).length;
+ const total=tasks.length;
 
-$("#totalStat").textContent=total;
-$("#completeStat").textContent=done;
-$("#statsNotes").textContent=notes.length;
+ const done=
+  tasks.filter(
+   task=>task.done
+  ).length;
 
-const percent=total?done/total*100:0;
+ $("#totalStat").textContent=total;
 
-$("#statsProgress").style.width=percent+"%";
+ $("#completeStat").textContent=done;
 
-$("#statsProgressText").textContent=
-total
-?`${Math.round(percent)}%`
-:t("noTasks");
+ $("#statsNotes").textContent=
+  notes.length;
+
+
+ const percent=
+  total
+  ?done/total*100
+  :0;
+
+
+ $("#statsProgress").style.width=
+  percent+"%";
+
+
+ $("#statsProgressText").textContent=
+  total
+  ?`${Math.round(percent)}%`
+  :t("noTasks");
 
 }
 
 
-/* =========================
+/* =====================================================
    ACTIVITY
-========================= */
+===================================================== */
 
 function renderActivity(){
 
-const list=$("#activityList");
+ const list=$("#activityList");
 
-list.innerHTML="";
+ list.innerHTML="";
 
-if(!activity.length){
+ if(!activity.length){
 
-list.innerHTML=
-`<span class="muted">${t("noActivity")}</span>`;
+  list.innerHTML=
+   `<span class="muted">
+    ${t("noActivity")}
+   </span>`;
 
-return;
+  return;
+
+ }
+
+ activity.forEach(item=>{
+
+  const row=document.createElement("div");
+
+  row.className="row";
+
+  row.innerHTML=`
+
+   <span>
+    ${escapeHTML(item.text)}
+   </span>
+
+   <span class="muted">
+    ${escapeHTML(item.time)}
+   </span>
+
+  `;
+
+  list.appendChild(row);
+
+ });
 
 }
 
-activity.forEach(item=>{
 
-const row=document.createElement("div");
-
-row.className="row";
-
-row.innerHTML=`
-<span>${escapeHTML(item.text)}</span>
-<span class="muted">${item.time}</span>
-`;
-
-list.appendChild(row);
-
-});
-
-}
-
-
-/* =========================
+/* =====================================================
    EXPORT
-========================= */
+===================================================== */
 
-$("#exportBtn").onclick=()=>{
+$("#exportBtn").addEventListener(
+ "click",
+ function(){
 
-const data={
-tasks,
-notes,
-activity,
-theme:localStorage.getItem("north_theme"),
-sound:localStorage.getItem("north_sound"),
-language
-};
+  const data={
 
-const blob=new Blob(
-[JSON.stringify(data,null,2)],
-{type:"application/json"}
+   tasks:tasks,
+
+   notes:notes,
+
+   activity:activity,
+
+   theme:
+    localStorage.getItem(
+     "north_theme"
+    ),
+
+   sound:
+    localStorage.getItem(
+     "north_sound"
+    ),
+
+   language:language
+
+  };
+
+
+  const blob=new Blob(
+   [
+    JSON.stringify(
+     data,
+     null,
+     2
+    )
+   ],
+   {
+    type:"application/json"
+   }
+  );
+
+
+  const url=
+   URL.createObjectURL(blob);
+
+  const link=
+   document.createElement("a");
+
+  link.href=url;
+
+  link.download=
+   "north-backup.json";
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+  URL.revokeObjectURL(url);
+
+  toast(t("exportReady"));
+
+  sound("success");
+
+ }
 );
 
-const url=URL.createObjectURL(blob);
 
-const a=document.createElement("a");
-
-a.href=url;
-a.download="north-backup.json";
-
-a.click();
-
-URL.revokeObjectURL(url);
-
-toast(t("exportReady"));
-sound("success");
-
-};
-
-
-/* =========================
+/* =====================================================
    IMPORT
-========================= */
+===================================================== */
 
-$("#importBtn").onclick=()=>{
- $("#importFile").click();
-};
+$("#importBtn").addEventListener(
+ "click",
+ function(){
 
-$("#importFile").onchange=e=>{
+  $("#importFile").click();
 
-const file=e.target.files[0];
-
-if(!file)return;
-
-const reader=new FileReader();
-
-reader.onload=()=>{
-
-try{
-
-const data=JSON.parse(reader.result);
-
-tasks=data.tasks||[];
-notes=data.notes||[];
-activity=data.activity||[];
-
-if(data.language){
- language=data.language;
- localStorage.setItem("north_language",language);
-}
-
-if(data.theme==="light"){
- document.body.classList.add("light");
-}else{
- document.body.classList.remove("light");
-}
-
-if(data.sound){
- soundEnabled=data.sound!=="off";
-}
-
-save();
-
-applyLanguage();
-renderAll();
-
-toast(t("imported"));
-sound("success");
-
-}catch{
-
-toast("Invalid file");
-sound("error");
-
-}
-
-};
-
-reader.readAsText(file);
-
-};
+ }
+);
 
 
-/* =========================
+$("#importFile").addEventListener(
+ "change",
+ function(e){
+
+  const file=e.target.files[0];
+
+  if(!file){
+   return;
+  }
+
+  const reader=
+   new FileReader();
+
+
+  reader.onload=function(){
+
+   try{
+
+    const data=
+     JSON.parse(reader.result);
+
+
+    tasks=
+     Array.isArray(data.tasks)
+     ?data.tasks
+     :[];
+
+
+    notes=
+     Array.isArray(data.notes)
+     ?data.notes
+     :[];
+
+
+    activity=
+     Array.isArray(data.activity)
+     ?data.activity
+     :[];
+
+
+    if(data.language==="ru" ||
+       data.language==="en"){
+
+     language=data.language;
+
+     localStorage.setItem(
+      "north_language",
+      language
+     );
+
+    }
+
+
+    if(data.theme==="light"){
+
+     document.body
+      .classList.add("light");
+
+    }else{
+
+     document.body
+      .classList.remove("light");
+
+    }
+
+
+    if(
+     data.sound==="on" ||
+     data.sound==="off"
+    ){
+
+     soundEnabled=
+      data.sound==="on";
+
+    }
+
+
+    save();
+
+    updateSoundButton();
+
+    applyLanguage();
+
+    toast(t("imported"));
+
+    sound("success");
+
+   }catch(error){
+
+    toast("Invalid file");
+
+    sound("error");
+
+   }
+
+  };
+
+
+  reader.readAsText(file);
+
+  e.target.value="";
+
+ }
+);
+
+
+/* =====================================================
    COMMAND SEARCH
-========================= */
+===================================================== */
 
 const commands=[
-["home","home"],
-["tasks","tasks"],
-["notes","notes"],
-["tools","tools"],
-["calendar","calendar"],
-["stats","stats"],
-["activity","activity"],
-["settings","settings"]
+
+ ["home","home"],
+ ["tasks","tasks"],
+ ["notes","notes"],
+ ["tools","tools"],
+ ["calendar","calendar"],
+ ["stats","stats"],
+ ["activity","activity"],
+ ["settings","settings"]
+
 ];
+
 
 function openCommands(){
 
-$("#commandModal").classList.add("show");
-$("#commandInput").value="";
-$("#commandInput").focus();
+ $("#commandModal")
+  .classList.add("show");
 
-renderCommands("");
+ $("#commandInput").value="";
 
-sound("open");
+ $("#commandInput").focus();
+
+ renderCommands("");
+
+ sound("open");
 
 }
+
 
 function renderCommands(query){
 
-const results=$("#results");
+ const results=$("#results");
 
-results.innerHTML="";
+ results.innerHTML="";
 
-commands
-.filter(x=>
-t(x[0]).toLowerCase()
-.includes(query.toLowerCase())
-)
-.forEach(item=>{
 
-const button=document.createElement("button");
+ commands
+ .filter(item=>
+  t(item[0])
+   .toLowerCase()
+   .includes(
+    query.toLowerCase()
+   )
+ )
+ .forEach(item=>{
 
-button.textContent=t(item[0]);
+  const button=
+   document.createElement("button");
 
-button.onclick=()=>{
+  button.textContent=t(item[0]);
 
-$("#commandModal").classList.remove("show");
+  button.addEventListener(
+   "click",
+   function(){
 
-showView(item[1]);
+    $("#commandModal")
+     .classList.remove("show");
 
-};
+    showView(item[1]);
 
-results.appendChild(button);
+   }
+  );
 
-});
+  results.appendChild(button);
+
+ });
 
 }
 
-$("#commandBtn").onclick=openCommands;
 
-$("#globalSearch").onfocus=openCommands;
-
-$("#commandInput").oninput=e=>{
- renderCommands(e.target.value);
-};
-
-$("#commandModal").onclick=e=>{
-
-if(e.target===e.currentTarget)
-e.currentTarget.classList.remove("show");
-
-};
-
-
-/* =========================
-   NOTIFICATION
-========================= */
-
-$("#notificationBtn").onclick=()=>{
-
-const active=tasks.filter(x=>!x.done).length;
-
-toast(
-language==="ru"
-?`Активных задач: ${active}`
-:`Active tasks: ${active}`
+$("#commandBtn").addEventListener(
+ "click",
+ openCommands
 );
 
-sound("open");
 
-};
-
-
-/* =========================
-   HOTKEYS
-========================= */
-
-document.addEventListener("keydown",e=>{
-
-if(
-(e.ctrlKey||e.metaKey)&&
-e.key.toLowerCase()==="k"
-){
-
-e.preventDefault();
-openCommands();
-
-}
-
-if(
-e.key.toLowerCase()==="h"&&
-!["INPUT","TEXTAREA"].includes(
-document.activeElement.tagName
-)
-){
-
-showView("home");
-
-}
-
-if(
-e.key.toLowerCase()==="t"&&
-!["INPUT","TEXTAREA"].includes(
-document.activeElement.tagName
-)
-){
-
-toggleTheme();
-
-}
-
-if(e.key==="Escape"){
-
-$("#commandModal").classList.remove("show");
-
-}
-
-});
+$("#globalSearch").addEventListener(
+ "focus",
+ openCommands
+);
 
 
-/* =========================
-   RENDER
-========================= */
+$("#commandInput").addEventListener(
+ "input",
+ function(){
+
+  renderCommands(
+   this.value
+  );
+
+ }
+);
+
+
+$("#commandModal").addEventListener(
+ "click",
+ function(e){
+
+  if(
+   e.target===
+   e.currentTarget
+  ){
+
+   e.currentTarget
+    .classList.remove("show");
+
+  }
+
+ }
+);
+
+
+/* =====================================================
+   NOTIFICATION
+===================================================== */
+
+$("#notificationBtn").addEventListener(
+ "click",
+ function(){
+
+  const active=
+   tasks.filter(
+    task=>!task.done
+   ).length;
+
+
+  toast(
+   language==="ru"
+   ?`Активных задач: ${active}`
+   :`Active tasks: ${active}`
+  );
+
+  sound("open");
+
+ }
+);
+
+
+/* =====================================================
+   KEYBOARD SHORTCUTS
+===================================================== */
+
+document.addEventListener(
+ "keydown",
+ function(e){
+
+  if(
+   (e.ctrlKey||e.metaKey) &&
+   e.key.toLowerCase()==="k"
+  ){
+
+   e.preventDefault();
+
+   openCommands();
+
+  }
+
+
+  if(
+   e.key.toLowerCase()==="h" &&
+   !["INPUT","TEXTAREA","SELECT"]
+    .includes(
+     document.activeElement.tagName
+    )
+  ){
+
+   showView("home");
+
+  }
+
+
+  if(
+   e.key.toLowerCase()==="t" &&
+   !["INPUT","TEXTAREA","SELECT"]
+    .includes(
+     document.activeElement.tagName
+    )
+  ){
+
+   toggleTheme();
+
+  }
+
+
+  if(e.key==="Escape"){
+
+   $("#commandModal")
+    .classList.remove("show");
+
+  }
+
+ }
+);
+
+
+/* =====================================================
+   RENDER ALL
+===================================================== */
 
 function renderAll(){
 
-renderTasks();
-renderNotes();
-renderStats();
-renderActivity();
-renderCalendar();
-updateClock();
+ renderTasks();
+
+ renderNotes();
+
+ renderStats();
+
+ renderActivity();
+
+ renderCalendar();
+
+ updateClock();
 
 }
 
+
+/* =====================================================
+   START
+===================================================== */
+
 drawTimer();
+
 drawStopwatch();
+
+updateSoundButton();
+
+applyLanguage();
+
 renderAll();
 
 </script>
