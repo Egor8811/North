@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090b10">
-<title>NORTH</title>
+<title>NOVA — Personal Workspace</title>
 
 <style>
 *{
@@ -910,7 +910,7 @@ textarea{
 }
 
 /* =====================================================
-   NORTH CUSTOMIZATION
+   NOVA CUSTOMIZATION
 ===================================================== */
 body.compact .main{padding:18px}
 body.compact .card{padding:14px}
@@ -1019,7 +1019,136 @@ body.glass .secondary{
 .calc .operator{font-weight:800}
 .calc .utility{font-weight:700}
 
+
+/* =====================================================
+   NOVA — GLOBAL UPDATE
+===================================================== */
+:root{
+  --nova-accent:#7657ff;
+  --nova-accent-2:#9b7bff;
+  --nova-radius:16px;
+}
+*{scrollbar-width:thin}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 0%, color-mix(in srgb,var(--accent) 12%,transparent), transparent 32%),
+    radial-gradient(circle at 90% 20%, color-mix(in srgb,var(--accent) 8%,transparent), transparent 28%),
+    var(--bg);
+}
+body.nova-focus-mode .nav,
+body.nova-focus-mode .heroSub,
+body.nova-focus-mode .secondaryNav{
+  opacity:.45;
+}
+.nova-command-palette{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:flex-start;
+  justify-content:center;
+  padding:10vh 20px 20px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(8px);
+}
+.nova-command-palette.open{display:flex}
+.nova-command-box{
+  width:min(720px,100%);
+  max-height:70vh;
+  overflow:auto;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--panel);
+  box-shadow:0 24px 80px rgba(0,0,0,.35);
+  padding:14px;
+}
+.nova-command-input{
+  width:100%;
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:var(--text);
+  border-radius:12px;
+  padding:14px;
+  outline:none;
+}
+.nova-command-list{display:grid;gap:6px;margin-top:10px}
+.nova-command-item{
+  padding:12px 13px;
+  border-radius:11px;
+  border:1px solid transparent;
+  cursor:pointer;
+}
+.nova-command-item:hover,
+.nova-command-item.active{
+  background:color-mix(in srgb,var(--accent) 13%,transparent);
+  border-color:color-mix(in srgb,var(--accent) 35%,transparent);
+}
+.nova-command-item small{display:block;color:var(--muted);margin-top:3px}
+.nova-shortcut{
+  margin-left:auto;
+  padding:3px 7px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  font-size:11px;
+  color:var(--muted);
+}
+.nova-welcome{
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:var(--nova-radius);
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--accent) 14%,var(--panel)),
+    var(--panel));
+  margin-bottom:16px;
+}
+.nova-welcome h2{margin:0 0 5px}
+.nova-welcome p{margin:0;color:var(--muted)}
+.nova-stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:14px 0;
+}
+.nova-stat-card{
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:var(--panel);
+}
+.nova-stat-card b{display:block;font-size:20px;margin-bottom:4px}
+.nova-stat-card span{font-size:12px;color:var(--muted)}
+.nova-toast-stack{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:10000;
+  display:grid;
+  gap:8px;
+  width:min(340px,calc(100vw - 36px));
+}
+.nova-toast{
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+  box-shadow:0 12px 35px rgba(0,0,0,.22);
+}
+@media(max-width:800px){
+  .nova-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nova-command-palette{padding:6vh 12px 12px}
+}
+@media(max-width:480px){
+  .nova-stat-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
+
+<meta name="theme-color" content="#7657ff">
+<meta name="application-name" content="NOVA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="NOVA — персональное пространство для задач, заметок, инструментов и настроек.">
 </head>
 
 <body>
@@ -1114,7 +1243,7 @@ placeholder="Поиск...   Ctrl + K"
 </h1>
 
 <p data-i18n="dashboardSub">
-NORTH — набор полезных инструментов в одном месте.
+NOVA — набор полезных инструментов в одном месте.
 </p>
 
 </div>
@@ -1591,7 +1720,7 @@ value="1"
 </h1>
 
 <p data-i18n="statsSub">
-Обзор использования NORTH.
+Обзор использования NOVA.
 </p>
 
 </div>
@@ -1688,7 +1817,7 @@ value="1"
 </h1>
 
 <p data-i18n="settingsSub">
-Настрой NORTH под себя.
+Настрой NOVA под себя.
 </p>
 
 </div>
@@ -1744,7 +1873,7 @@ value="1"
 <div class="settingsRow">
   <div>
     <b data-i18n="fontSize">Размер интерфейса</b><br>
-    <span class="muted" data-i18n="fontSizeSub">Сделай NORTH крупнее или компактнее</span>
+    <span class="muted" data-i18n="fontSizeSub">Сделай NOVA крупнее или компактнее</span>
   </div>
   <div class="rangeWrap">
     <input type="range" id="fontSizeRange" min="90" max="115" step="1" value="100">
@@ -1792,7 +1921,7 @@ value="1"
 <div class="settingsRow">
   <div>
     <b data-i18n="exportTitle">Экспорт</b><br>
-    <span class="muted" data-i18n="exportSub">Скачать данные NORTH</span>
+    <span class="muted" data-i18n="exportSub">Скачать данные NOVA</span>
   </div>
   <button class="primary" id="exportBtn" data-i18n="export">Экспорт</button>
 </div>
@@ -1926,22 +2055,22 @@ function toast(text){
 ===================================================== */
 
 let tasks = JSON.parse(
- localStorage.getItem("north_tasks") || "[]"
+ localStorage.getItem("nova_tasks") || "[]"
 );
 
 let notes = JSON.parse(
- localStorage.getItem("north_notes") || "[]"
+ localStorage.getItem("nova_notes") || "[]"
 );
 
 let activity = JSON.parse(
- localStorage.getItem("north_activity") || "[]"
+ localStorage.getItem("nova_activity") || "[]"
 );
 
 let soundEnabled =
- localStorage.getItem("north_sound") !== "off";
+ localStorage.getItem("nova_sound") !== "off";
 
 let language =
- localStorage.getItem("north_language") || "ru";
+ localStorage.getItem("nova_language") || "ru";
 
 
 /* =====================================================
@@ -1964,7 +2093,7 @@ theme:"Тема",
 clear:"Очистить данные",
 
 dashboard:"Рабочее пространство",
-dashboardSub:"NORTH — набор полезных инструментов в одном месте.",
+dashboardSub:"NOVA — набор полезных инструментов в одном месте.",
 
 activeTasks:"Активные задачи",
 notesCount:"Заметки",
@@ -2007,7 +2136,7 @@ calendarTitle:"Календарь",
 calendarSub:"Текущий месяц и сегодняшний день.",
 
 statsTitle:"Статистика",
-statsSub:"Обзор использования NORTH.",
+statsSub:"Обзор использования NOVA.",
 total:"Всего задач",
 completion:"Выполнение задач",
 
@@ -2015,7 +2144,7 @@ activityTitle:"Активность",
 activitySub:"История действий на этом устройстве.",
 
 settingsTitle:"Настройки",
-settingsSub:"Настрой NORTH под себя.",
+settingsSub:"Настрой NOVA под себя.",
 soundTitle:"Звуки интерфейса",
 soundSub:"Разные звуки для действий",
 language:"Язык",
@@ -2025,7 +2154,7 @@ themeSub:"Изменить внешний вид",
 switch:"Переключить",
 
 exportTitle:"Экспорт",
-exportSub:"Скачать данные NORTH",
+exportSub:"Скачать данные NOVA",
 export:"Экспорт",
 
 importTitle:"Импорт",
@@ -2056,7 +2185,7 @@ themeModeSub:"Тёмная, светлая или системная",
 accentColor:"Цвет акцента",
 accentColorSub:"Главный цвет кнопок и элементов",
 fontSize:"Размер интерфейса",
-fontSizeSub:"Сделай NORTH крупнее или компактнее",
+fontSizeSub:"Сделай NOVA крупнее или компактнее",
 compactMode:"Компактный режим",
 compactModeSub:"Уменьшает отступы и экономит место",
 animations:"Анимации",
@@ -2096,7 +2225,7 @@ theme:"Theme",
 clear:"Clear data",
 
 dashboard:"Workspace",
-dashboardSub:"NORTH — useful tools in one place.",
+dashboardSub:"NOVA — useful tools in one place.",
 
 activeTasks:"Active tasks",
 notesCount:"Notes",
@@ -2139,7 +2268,7 @@ calendarTitle:"Calendar",
 calendarSub:"Current month and today.",
 
 statsTitle:"Statistics",
-statsSub:"NORTH usage overview.",
+statsSub:"NOVA usage overview.",
 total:"Total tasks",
 completion:"Task completion",
 
@@ -2147,7 +2276,7 @@ activityTitle:"Activity",
 activitySub:"Action history on this device.",
 
 settingsTitle:"Settings",
-settingsSub:"Customize NORTH.",
+settingsSub:"Customize NOVA.",
 soundTitle:"Interface sounds",
 soundSub:"Different sounds for actions",
 language:"Language",
@@ -2157,7 +2286,7 @@ themeSub:"Change appearance",
 switch:"Switch",
 
 exportTitle:"Export",
-exportSub:"Download NORTH data",
+exportSub:"Download NOVA data",
 export:"Export",
 
 importTitle:"Import",
@@ -2188,7 +2317,7 @@ themeModeSub:"Dark, light or system",
 accentColor:"Accent color",
 accentColorSub:"Main color for buttons and elements",
 fontSize:"Interface size",
-fontSizeSub:"Make NORTH larger or more compact",
+fontSizeSub:"Make NOVA larger or more compact",
 compactMode:"Compact mode",
 compactModeSub:"Reduce spacing to fit more content",
 animations:"Animations",
@@ -2364,7 +2493,7 @@ $("#languageSelect").addEventListener(
   language=this.value;
 
   localStorage.setItem(
-   "north_language",
+   "nova_language",
    language
   );
 
@@ -2389,17 +2518,17 @@ $("#languageSelect").addEventListener(
 function save(){
 
  localStorage.setItem(
-  "north_tasks",
+  "nova_tasks",
   JSON.stringify(tasks)
  );
 
  localStorage.setItem(
-  "north_notes",
+  "nova_notes",
   JSON.stringify(notes)
  );
 
  localStorage.setItem(
-  "north_activity",
+  "nova_activity",
   JSON.stringify(activity)
  );
 
@@ -2881,11 +3010,11 @@ const defaultSettings = {
 
 let userSettings = {
   ...defaultSettings,
-  ...JSON.parse(localStorage.getItem("north_settings") || "{}")
+  ...JSON.parse(localStorage.getItem("nova_settings") || "{}")
 };
 
 function saveSettings(){
-  localStorage.setItem("north_settings", JSON.stringify(userSettings));
+  localStorage.setItem("nova_settings", JSON.stringify(userSettings));
 }
 
 function applyThemeMode(){
@@ -2970,7 +3099,7 @@ $("#resetSettingsBtn").addEventListener("click",function(){
   userSettings={...defaultSettings};
   saveSettings();
   applyPersonalization();
-  localStorage.setItem("north_theme","dark");
+  localStorage.setItem("nova_theme","dark");
   document.body.classList.remove("light");
   toast(t("settingsResetDone"));
   sound("switch");
@@ -3028,7 +3157,7 @@ $("#soundSwitch").addEventListener(
   soundEnabled=!soundEnabled;
 
   localStorage.setItem(
-   "north_sound",
+   "nova_sound",
    soundEnabled
    ? "on"
    : "off"
@@ -3286,7 +3415,7 @@ $("#swReset").addEventListener(
 ===================================================== */
 
 let expression="";
-let calcHistory=JSON.parse(localStorage.getItem("north_calc_history") || "[]");
+let calcHistory=JSON.parse(localStorage.getItem("nova_calc_history") || "[]");
 
 function renderCalc(){
   $("#calcDisplay").value=expression;
@@ -3385,7 +3514,7 @@ function calculate(){
     const result=formatCalcResult(evaluateExpression(expression));
     calcHistory.unshift(expression+" = "+result);
     calcHistory=calcHistory.slice(0,12);
-    localStorage.setItem("north_calc_history",JSON.stringify(calcHistory));
+    localStorage.setItem("nova_calc_history",JSON.stringify(calcHistory));
     expression=result;
     renderCalc();
     sound("success");
@@ -3782,12 +3911,12 @@ $("#exportBtn").addEventListener(
 
    theme:
     localStorage.getItem(
-     "north_theme"
+     "nova_theme"
     ),
 
    sound:
     localStorage.getItem(
-     "north_sound"
+     "nova_sound"
     ),
 
    language:language
@@ -3896,7 +4025,7 @@ $("#importFile").addEventListener(
      language=data.language;
 
      localStorage.setItem(
-      "north_language",
+      "nova_language",
       language
      );
 
@@ -4191,6 +4320,204 @@ applyLanguage();
 
 renderAll();
 
+</script>
+
+
+<!-- NOVA GLOBAL UPDATE: COMMAND PALETTE -->
+<div class="nova-command-palette" id="novaCommandPalette" aria-hidden="true">
+  <div class="nova-command-box">
+    <input class="nova-command-input" id="novaCommandSearch"
+      placeholder="Поиск действий…  Ctrl + K" autocomplete="off">
+    <div class="nova-command-list" id="novaCommandList"></div>
+  </div>
+</div>
+<div class="nova-toast-stack" id="novaToastStack"></div>
+
+<script>
+
+/* =====================================================
+   NOVA GLOBAL UPDATE ENGINE
+===================================================== */
+(function(){
+  if(window.__NOVA_GLOBAL_UPDATE__) return;
+  window.__NOVA_GLOBAL_UPDATE__=true;
+
+  const $n = (s)=>document.querySelector(s);
+  const palette=$n("#novaCommandPalette");
+  const input=$n("#novaCommandSearch");
+  const list=$n("#novaCommandList");
+
+  const commands=[
+    ["Главная","Перейти на главную","home"],
+    ["Задачи","Открыть задачи","tasks"],
+    ["Заметки","Открыть заметки","notes"],
+    ["Календарь","Открыть календарь","calendar"],
+    ["Калькулятор","Открыть калькулятор","calculator"],
+    ["Конвертер","Открыть конвертер","converter"],
+    ["Настройки","Открыть настройки","settings"],
+  ];
+
+  function showPalette(){
+    palette.classList.add("open");
+    palette.setAttribute("aria-hidden","false");
+    input.value="";
+    renderCommands("");
+    requestAnimationFrame(()=>input.focus());
+  }
+  function hidePalette(){
+    palette.classList.remove("open");
+    palette.setAttribute("aria-hidden","true");
+  }
+  function renderCommands(q){
+    const query=(q||"").toLowerCase().trim();
+    const filtered=commands.filter(c=>
+      c[0].toLowerCase().includes(query) ||
+      c[1].toLowerCase().includes(query)
+    );
+    list.innerHTML=filtered.map((c,i)=>`
+      <div class="nova-command-item" data-section="${c[2]}">
+        <b>${c[0]}</b><span class="nova-shortcut">${i<9?i+1:""}</span>
+        <small>${c[1]}</small>
+      </div>`).join("") ||
+      `<div class="muted" style="padding:12px">Ничего не найдено</div>`;
+  }
+  function go(section){
+    hidePalette();
+
+    const aliases={
+      home:["home","dashboard"],
+      tasks:["tasks","task"],
+      notes:["notes","note"],
+      calendar:["calendar"],
+      calculator:["calculator","calc"],
+      converter:["converter","convert"],
+      settings:["settings","preferences"]
+    };
+
+    const names=aliases[section] || [section];
+    let target=null;
+
+    for(const name of names){
+      target=
+        document.querySelector(`[data-section="${name}"]`) ||
+        document.querySelector(`#${name}`) ||
+        document.querySelector(`[href="#${name}"]`);
+      if(target) break;
+    }
+
+    if(target){
+      target.click();
+    }
+  }
+  list.addEventListener("click",(e)=>{
+    const item=e.target.closest(".nova-command-item");
+    if(item) go(item.dataset.section);
+  });
+  input.addEventListener("input",()=>renderCommands(input.value));
+  palette.addEventListener("click",(e)=>{
+    if(e.target===palette) hidePalette();
+  });
+  document.addEventListener("keydown",(e)=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){
+      e.preventDefault();
+      palette.classList.contains("open") ? hidePalette() : showPalette();
+    }
+    if(e.key==="Escape" && palette.classList.contains("open")) hidePalette();
+  });
+
+  window.NOVA={
+    openCommandPalette:showPalette,
+    closeCommandPalette:hidePalette
+  };
+
+  // Greeting is intentionally lightweight and only appears if a main area exists.
+  // Lightweight welcome/dashboard is created only after the page is ready.
+  function initNovaDashboard(){
+    const main=document.querySelector(".main") || document.querySelector("main");
+    if(!main) return;
+
+    if(!document.querySelector(".nova-welcome")){
+      const welcome=document.createElement("div");
+      welcome.className="nova-welcome";
+      welcome.innerHTML="<h2>Добро пожаловать в NOVA ✦</h2><p>Твоё персональное пространство — задачи, заметки, инструменты и настройки в одном месте.</p>";
+      main.prepend(welcome);
+    }
+
+    if(!document.querySelector(".nova-stat-grid")){
+      const stats=document.createElement("div");
+      stats.className="nova-stat-grid";
+      stats.innerHTML=`
+        <div class="nova-stat-card"><b id="novaStatTasks">—</b><span>задач</span></div>
+        <div class="nova-stat-card"><b id="novaStatNotes">—</b><span>заметок</span></div>
+        <div class="nova-stat-card"><b id="novaStatHistory">—</b><span>записей активности</span></div>
+        <div class="nova-stat-card"><b>Ctrl K</b><span>быстрые действия</span></div>`;
+      main.insertBefore(stats, main.children[1] || null);
+    }
+
+    updateNovaStats();
+  }
+
+  function updateNovaStats(){
+    const taskEl=document.querySelector("#novaStatTasks");
+    const noteEl=document.querySelector("#novaStatNotes");
+    const activityEl=document.querySelector("#novaStatHistory");
+
+    // Read from localStorage as a safe fallback; no assumptions about
+    // initialization order of the original application.
+    try{
+      const taskData=JSON.parse(localStorage.getItem("nova_tasks") || "[]");
+      if(taskEl) taskEl.textContent=Array.isArray(taskData)?taskData.length:"0";
+    }catch(e){ if(taskEl) taskEl.textContent="0"; }
+
+    try{
+      const noteData=JSON.parse(localStorage.getItem("nova_notes") || "[]");
+      if(noteEl) noteEl.textContent=Array.isArray(noteData)?noteData.length:"0";
+    }catch(e){ if(noteEl) noteEl.textContent="0"; }
+
+    try{
+      const activityData=JSON.parse(localStorage.getItem("nova_activity") || "[]");
+      if(activityEl) activityEl.textContent=Array.isArray(activityData)?activityData.length:"0";
+    }catch(e){ if(activityEl) activityEl.textContent="0"; }
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",initNovaDashboard,{once:true});
+  }else{
+    initNovaDashboard();
+  }
+
+  // Expose a safe toast for future features.
+  window.novaToast=function(message){
+    const stack=document.querySelector("#novaToastStack");
+    if(!stack)return;
+    const el=document.createElement("div");
+    el.className="nova-toast";
+    el.textContent=message;
+    stack.appendChild(el);
+    setTimeout(()=>el.remove(),2600);
+  };
+})();
+
+</script>
+
+<script>
+(function(){
+  try{
+    const pairs=[
+      ["nova_tasks","north_tasks"],
+      ["nova_notes","north_notes"],
+      ["nova_activity","north_activity"],
+      ["nova_settings","north_settings"],
+      ["nova_language","north_language"],
+      ["nova_calc_history","north_calc_history"]
+    ];
+    pairs.forEach(([to,from])=>{
+      if(localStorage.getItem(to)===null && localStorage.getItem(from)!==null){
+        localStorage.setItem(to,localStorage.getItem(from));
+      }
+    });
+  }catch(e){}
+})();
 </script>
 
 </body>
