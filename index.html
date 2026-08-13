@@ -908,6 +908,117 @@ textarea{
  }
 
 }
+
+/* =====================================================
+   NORTH CUSTOMIZATION
+===================================================== */
+body.compact .main{padding:18px}
+body.compact .card{padding:14px}
+body.compact .grid{gap:10px}
+body.compact .nav{gap:3px}
+body.noAnimations *{
+  animation:none !important;
+  transition:none !important;
+}
+body.glass .card,
+body.glass .hero,
+body.glass .search,
+body.glass .icon,
+body.glass .field,
+body.glass .secondary{
+  background:color-mix(in srgb,var(--panel) 72%,transparent);
+  backdrop-filter:blur(14px);
+}
+.settingsSection{
+  margin-top:18px;
+  padding-top:8px;
+}
+.settingsSection h3{
+  margin:0 0 4px;
+}
+.settingsSectionSub{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:4px;
+}
+.settingControl{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.colorPicker{
+  width:52px;
+  height:38px;
+  padding:3px;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:var(--panel2);
+}
+.rangeWrap{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:190px;
+}
+.rangeWrap input[type=range]{
+  width:130px;
+  accent-color:var(--accent);
+}
+.rangeValue{
+  min-width:42px;
+  text-align:right;
+  color:var(--muted);
+  font-size:12px;
+}
+.selectControl{
+  min-width:150px;
+}
+.settingHint{
+  display:block;
+  margin-top:3px;
+  font-size:12px;
+  color:var(--muted);
+}
+.dangerBtn{
+  border:1px solid rgba(255,93,114,.35);
+  background:rgba(255,93,114,.10);
+  color:var(--danger);
+  padding:11px 15px;
+  border-radius:10px;
+}
+.dangerBtn:hover{border-color:var(--danger)}
+.calcTop{
+  display:flex;
+  gap:7px;
+  margin-bottom:7px;
+}
+.calcTop .field{flex:1}
+.calcHistory{
+  max-height:125px;
+  overflow:auto;
+  margin:0 0 8px;
+  display:grid;
+  gap:5px;
+}
+.calcHistoryItem{
+  border:1px solid var(--border);
+  background:var(--panel2);
+  border-radius:8px;
+  padding:7px 9px;
+  color:var(--muted);
+  font-size:12px;
+  cursor:pointer;
+}
+.calcHistoryItem:hover{
+  color:var(--text);
+  border-color:var(--accent);
+}
+.calc .wide{grid-column:span 2}
+.calc .operator{font-weight:800}
+.calc .utility{font-weight:700}
+
 </style>
 </head>
 
@@ -1326,51 +1437,74 @@ data-i18n="reset">
 
 
 <div class="card">
+<h3 data-i18n="calculator">Калькулятор</h3>
 
-<h3 data-i18n="calculator">
-Калькулятор
-</h3>
+<div class="calcTop">
+  <input class="field" id="calcDisplay" inputmode="decimal" autocomplete="off" aria-label="Calculator">
+  <button class="secondary" id="calcBackspace" title="Backspace">⌫</button>
+</div>
+
+<div class="calcHistory" id="calcHistory"></div>
 
 <div class="calc">
+  <button class="utility" data-c="C">C</button>
+  <button class="utility" data-c="(">(</button>
+  <button class="utility" data-c=")">)</button>
+  <button class="operator" data-c="/">÷</button>
 
-<input
-class="field"
-id="calcDisplay"
-readonly
->
+  <button data-c="7">7</button>
+  <button data-c="8">8</button>
+  <button data-c="9">9</button>
+  <button class="operator" data-c="*">×</button>
 
-<button data-c="7">7</button>
-<button data-c="8">8</button>
-<button data-c="9">9</button>
-<button data-c="/">÷</button>
+  <button data-c="4">4</button>
+  <button data-c="5">5</button>
+  <button data-c="6">6</button>
+  <button class="operator" data-c="-">−</button>
 
-<button data-c="4">4</button>
-<button data-c="5">5</button>
-<button data-c="6">6</button>
-<button data-c="*">×</button>
+  <button data-c="1">1</button>
+  <button data-c="2">2</button>
+  <button data-c="3">3</button>
+  <button class="operator" data-c="+">+</button>
 
-<button data-c="1">1</button>
-<button data-c="2">2</button>
-<button data-c="3">3</button>
-<button data-c="-">−</button>
+  <button data-c="%">%</button>
+  <button data-c="0">0</button>
+  <button data-c=".">.</button>
+  <button data-c="00">00</button>
 
-<button data-c="0">0</button>
-<button data-c=".">.</button>
-<button data-c="C">C</button>
-<button data-c="+">+</button>
-
-<button class="equals" data-c="=">
-=
-</button>
-
+  <button class="utility" data-c="sqrt">√</button>
+  <button class="utility" data-c="square">x²</button>
+  <button class="utility" data-c="sign">±</button>
+  <button class="equals" data-c="=">=</button>
 </div>
-
 </div>
-
 
 <div class="card">
+<h3 data-i18n="converter">Конвертер</h3>
 
-<h3 data-i18n="converter">
+<input class="field" type="number" id="convValue" value="1">
+
+<br><br>
+
+<select class="field" id="convType">
+<option value="km-mi">Км → мили</option>
+<option value="mi-km">Мили → км</option>
+<option value="c-f">°C → °F</option>
+<option value="f-c">°F → °C</option>
+<option value="kg-lb">Кг → фунты</option>
+<option value="lb-kg">Фунты → кг</option>
+<option value="m-ft">Метры → футы</option>
+<option value="ft-m">Футы → метры</option>
+<option value="l-gal">Литры → галлоны</option>
+<option value="gal-l">Галлоны → литры</option>
+<option value="kmh-mph">Км/ч → миль/ч</option>
+<option value="mph-kmh">Миль/ч → км/ч</option>
+</select>
+
+<br><br>
+
+<div class="stat" id="convResult">0</div>
+</div>
 Конвертер
 </h3>
 
@@ -1561,147 +1695,134 @@ value="1"
 
 <div class="card">
 
+<div class="settingsSection">
+  <h3 data-i18n="appearanceSection">Внешний вид</h3>
+  <div class="settingsSectionSub" data-i18n="appearanceSectionSub">Полностью настрой интерфейс под себя.</div>
+</div>
 
 <div class="settingsRow">
-
-<div>
-
-<b data-i18n="soundTitle">
-Звуки интерфейса
-</b>
-
-<br>
-
-<span class="muted" data-i18n="soundSub">
-Разные звуки для действий
-</span>
-
+  <div>
+    <b data-i18n="soundTitle">Звуки интерфейса</b><br>
+    <span class="muted" data-i18n="soundSub">Разные звуки для действий</span>
+  </div>
+  <button class="switch on" id="soundSwitch"><i></i></button>
 </div>
-
-<button class="switch on" id="soundSwitch">
-<i></i>
-</button>
-
-</div>
-
 
 <div class="settingsRow">
-
-<div>
-
-<b data-i18n="language">
-Язык
-</b>
-
-<br>
-
-<span class="muted" data-i18n="languageSub">
-Язык интерфейса
-</span>
-
+  <div>
+    <b data-i18n="language">Язык</b><br>
+    <span class="muted" data-i18n="languageSub">Язык интерфейса</span>
+  </div>
+  <select class="secondary selectControl" id="languageSelect">
+    <option value="ru">Русский</option>
+    <option value="en">English</option>
+  </select>
 </div>
-
-<select class="secondary" id="languageSelect">
-
-<option value="ru">
-Русский
-</option>
-
-<option value="en">
-English
-</option>
-
-</select>
-
-</div>
-
 
 <div class="settingsRow">
-
-<div>
-
-<b data-i18n="darkTheme">
-Тёмная тема
-</b>
-
-<br>
-
-<span class="muted" data-i18n="themeSub">
-Изменить внешний вид
-</span>
-
+  <div>
+    <b data-i18n="themeMode">Режим темы</b><br>
+    <span class="muted" data-i18n="themeModeSub">Тёмная, светлая или системная</span>
+  </div>
+  <select class="secondary selectControl" id="themeMode">
+    <option value="dark">Dark</option>
+    <option value="light">Light</option>
+    <option value="system">System</option>
+  </select>
 </div>
-
-<button
-class="secondary"
-id="settingsTheme"
-data-i18n="switch">
-Переключить
-</button>
-
-</div>
-
 
 <div class="settingsRow">
-
-<div>
-
-<b data-i18n="exportTitle">
-Экспорт
-</b>
-
-<br>
-
-<span class="muted" data-i18n="exportSub">
-Скачать данные NORTH
-</span>
-
+  <div>
+    <b data-i18n="accentColor">Цвет акцента</b><br>
+    <span class="muted" data-i18n="accentColorSub">Главный цвет кнопок и элементов</span>
+  </div>
+  <div class="settingControl">
+    <input class="colorPicker" type="color" id="accentColor" value="#7657ff">
+  </div>
 </div>
-
-<button
-class="primary"
-id="exportBtn"
-data-i18n="export">
-Экспорт
-</button>
-
-</div>
-
 
 <div class="settingsRow">
-
-<div>
-
-<b data-i18n="importTitle">
-Импорт
-</b>
-
-<br>
-
-<span class="muted" data-i18n="importSub">
-Загрузить сохранённые данные
-</span>
-
+  <div>
+    <b data-i18n="fontSize">Размер интерфейса</b><br>
+    <span class="muted" data-i18n="fontSizeSub">Сделай NORTH крупнее или компактнее</span>
+  </div>
+  <div class="rangeWrap">
+    <input type="range" id="fontSizeRange" min="90" max="115" step="1" value="100">
+    <span class="rangeValue" id="fontSizeValue">100%</span>
+  </div>
 </div>
 
-<button
-class="secondary"
-id="importBtn"
-data-i18n="import">
-Импорт
-</button>
+<div class="settingsRow">
+  <div>
+    <b data-i18n="compactMode">Компактный режим</b><br>
+    <span class="muted" data-i18n="compactModeSub">Уменьшает отступы и экономит место</span>
+  </div>
+  <button class="switch" id="compactSwitch"><i></i></button>
+</div>
 
-<input
-type="file"
-id="importFile"
-accept=".json"
-hidden
->
+<div class="settingsRow">
+  <div>
+    <b data-i18n="animations">Анимации</b><br>
+    <span class="muted" data-i18n="animationsSub">Плавные переходы и эффекты</span>
+  </div>
+  <button class="switch on" id="animationsSwitch"><i></i></button>
+</div>
 
+<div class="settingsRow">
+  <div>
+    <b data-i18n="glassMode">Стеклянный интерфейс</b><br>
+    <span class="muted" data-i18n="glassModeSub">Добавляет прозрачность и размытие</span>
+  </div>
+  <button class="switch" id="glassSwitch"><i></i></button>
+</div>
+
+<div class="settingsRow">
+  <div>
+    <b data-i18n="autoFocus">Автофокус поиска</b><br>
+    <span class="muted" data-i18n="autoFocusSub">Открывать поиск сразу после Ctrl + K</span>
+  </div>
+  <button class="switch on" id="autoFocusSwitch"><i></i></button>
+</div>
+
+<div class="settingsSection">
+  <h3 data-i18n="dataSection">Данные</h3>
+  <div class="settingsSectionSub" data-i18n="dataSectionSub">Резервные копии и управление локальными данными.</div>
+</div>
+
+<div class="settingsRow">
+  <div>
+    <b data-i18n="exportTitle">Экспорт</b><br>
+    <span class="muted" data-i18n="exportSub">Скачать данные NORTH</span>
+  </div>
+  <button class="primary" id="exportBtn" data-i18n="export">Экспорт</button>
+</div>
+
+<div class="settingsRow">
+  <div>
+    <b data-i18n="importTitle">Импорт</b><br>
+    <span class="muted" data-i18n="importSub">Загрузить сохранённые данные</span>
+  </div>
+  <button class="secondary" id="importBtn" data-i18n="import">Импорт</button>
+  <input type="file" id="importFile" accept=".json" hidden>
+</div>
+
+<div class="settingsRow">
+  <div>
+    <b data-i18n="resetSettings">Сбросить настройки</b><br>
+    <span class="muted" data-i18n="resetSettingsSub">Вернуть внешний вид к стандартному</span>
+  </div>
+  <button class="secondary" id="resetSettingsBtn" data-i18n="resetSettingsBtn">Сбросить</button>
+</div>
+
+<div class="settingsRow">
+  <div>
+    <b data-i18n="clearAll">Удалить всё</b><br>
+    <span class="muted" data-i18n="clearAllSub">Удалить задачи, заметки и историю</span>
+  </div>
+  <button class="dangerBtn" id="clearAllSettings" data-i18n="clearAllBtn">Удалить</button>
 </div>
 
 </div>
-
 </section>
 
 </main>
@@ -1927,7 +2048,37 @@ timerDone:"Фокус завершён",
 noTasks:"Нет задач",
 noActivity:"История пуста.",
 taskDeleted:"Задача удалена",
-noteDeleted:"Заметка удалена"
+noteDeleted:"Заметка удалена",
+appearanceSection:"Внешний вид",
+appearanceSectionSub:"Полностью настрой интерфейс под себя.",
+themeMode:"Режим темы",
+themeModeSub:"Тёмная, светлая или системная",
+accentColor:"Цвет акцента",
+accentColorSub:"Главный цвет кнопок и элементов",
+fontSize:"Размер интерфейса",
+fontSizeSub:"Сделай NORTH крупнее или компактнее",
+compactMode:"Компактный режим",
+compactModeSub:"Уменьшает отступы и экономит место",
+animations:"Анимации",
+animationsSub:"Плавные переходы и эффекты",
+glassMode:"Стеклянный интерфейс",
+glassModeSub:"Добавляет прозрачность и размытие",
+autoFocus:"Автофокус поиска",
+autoFocusSub:"Открывать поиск сразу после Ctrl + K",
+dataSection:"Данные",
+dataSectionSub:"Резервные копии и управление локальными данными.",
+resetSettings:"Сбросить настройки",
+resetSettingsSub:"Вернуть внешний вид к стандартному",
+resetSettingsBtn:"Сбросить",
+clearAll:"Удалить всё",
+clearAllSub:"Удалить задачи, заметки и историю",
+clearAllBtn:"Удалить",
+calcBackspace:"Удалить символ",
+calcError:"Ошибка вычисления",
+calcHistoryEmpty:"История вычислений пуста",
+settingsResetDone:"Настройки сброшены",
+calcCopied:"Результат выбран"
+
 
 },
 
@@ -2029,7 +2180,37 @@ timerDone:"Focus complete",
 noTasks:"No tasks",
 noActivity:"No activity.",
 taskDeleted:"Task deleted",
-noteDeleted:"Note deleted"
+noteDeleted:"Note deleted",
+appearanceSection:"Appearance",
+appearanceSectionSub:"Fully customize the interface.",
+themeMode:"Theme mode",
+themeModeSub:"Dark, light or system",
+accentColor:"Accent color",
+accentColorSub:"Main color for buttons and elements",
+fontSize:"Interface size",
+fontSizeSub:"Make NORTH larger or more compact",
+compactMode:"Compact mode",
+compactModeSub:"Reduce spacing to fit more content",
+animations:"Animations",
+animationsSub:"Smooth transitions and effects",
+glassMode:"Glass interface",
+glassModeSub:"Add transparency and blur",
+autoFocus:"Search autofocus",
+autoFocusSub:"Focus search immediately after Ctrl + K",
+dataSection:"Data",
+dataSectionSub:"Backups and local data management.",
+resetSettings:"Reset settings",
+resetSettingsSub:"Restore the default appearance",
+resetSettingsBtn:"Reset",
+clearAll:"Delete everything",
+clearAllSub:"Delete tasks, notes and activity",
+clearAllBtn:"Delete",
+calcBackspace:"Delete character",
+calcError:"Calculation error",
+calcHistoryEmpty:"Calculation history is empty",
+settingsResetDone:"Settings reset",
+calcCopied:"Result selected"
+
 
 }
 
@@ -2683,45 +2864,146 @@ function updateClock(){
 setInterval(updateClock,1000);
 
 
+
 /* =====================================================
-   THEME
+   PERSONALIZATION SETTINGS
 ===================================================== */
 
-function toggleTheme(){
+const defaultSettings = {
+  accent:"#7657ff",
+  fontSize:100,
+  compact:false,
+  animations:true,
+  glass:false,
+  autoFocus:true,
+  theme:"dark"
+};
 
- document.body.classList.toggle("light");
+let userSettings = {
+  ...defaultSettings,
+  ...JSON.parse(localStorage.getItem("north_settings") || "{}")
+};
 
- localStorage.setItem(
-  "north_theme",
-  document.body.classList.contains("light")
-  ? "light"
-  : "dark"
- );
-
- sound("switch");
-
+function saveSettings(){
+  localStorage.setItem("north_settings", JSON.stringify(userSettings));
 }
 
+function applyThemeMode(){
+  const mode=userSettings.theme || "dark";
+  const systemLight=window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: light)").matches;
+  const light=mode==="light" || (mode==="system" && systemLight);
+  document.body.classList.toggle("light", light);
+}
 
-$("#themeBtn").addEventListener(
- "click",
- toggleTheme
-);
+function applyPersonalization(){
+  document.documentElement.style.setProperty("--accent", userSettings.accent || defaultSettings.accent);
+  document.documentElement.style.fontSize=(userSettings.fontSize || 100)+"%";
+  document.body.classList.toggle("compact", !!userSettings.compact);
+  document.body.classList.toggle("noAnimations", !userSettings.animations);
+  document.body.classList.toggle("glass", !!userSettings.glass);
+  applyThemeMode();
 
-$("#settingsTheme").addEventListener(
- "click",
- toggleTheme
-);
+  if($("#accentColor")) $("#accentColor").value=userSettings.accent;
+  if($("#fontSizeRange")) $("#fontSizeRange").value=userSettings.fontSize;
+  if($("#fontSizeValue")) $("#fontSizeValue").textContent=userSettings.fontSize+"%";
+  if($("#themeMode")) $("#themeMode").value=userSettings.theme;
 
+  setSwitch($("#compactSwitch"), userSettings.compact);
+  setSwitch($("#animationsSwitch"), userSettings.animations);
+  setSwitch($("#glassSwitch"), userSettings.glass);
+  setSwitch($("#autoFocusSwitch"), userSettings.autoFocus);
+}
 
-if(
- localStorage.getItem("north_theme")
- ===
- "light"
-){
+function setSwitch(el,on){
+  if(el) el.classList.toggle("on",!!on);
+}
 
- document.body.classList.add("light");
+$("#accentColor").addEventListener("input",function(){
+  userSettings.accent=this.value;
+  saveSettings();
+  applyPersonalization();
+});
 
+$("#fontSizeRange").addEventListener("input",function(){
+  userSettings.fontSize=Number(this.value);
+  saveSettings();
+  applyPersonalization();
+});
+
+$("#themeMode").addEventListener("change",function(){
+  userSettings.theme=this.value;
+  saveSettings();
+  applyPersonalization();
+  sound("switch");
+});
+
+$("#compactSwitch").addEventListener("click",function(){
+  userSettings.compact=!userSettings.compact;
+  saveSettings();
+  applyPersonalization();
+  sound("switch");
+});
+
+$("#animationsSwitch").addEventListener("click",function(){
+  userSettings.animations=!userSettings.animations;
+  saveSettings();
+  applyPersonalization();
+  if(userSettings.animations) sound("switch");
+});
+
+$("#glassSwitch").addEventListener("click",function(){
+  userSettings.glass=!userSettings.glass;
+  saveSettings();
+  applyPersonalization();
+  sound("switch");
+});
+
+$("#autoFocusSwitch").addEventListener("click",function(){
+  userSettings.autoFocus=!userSettings.autoFocus;
+  saveSettings();
+  applyPersonalization();
+  sound("switch");
+});
+
+$("#resetSettingsBtn").addEventListener("click",function(){
+  userSettings={...defaultSettings};
+  saveSettings();
+  applyPersonalization();
+  localStorage.setItem("north_theme","dark");
+  document.body.classList.remove("light");
+  toast(t("settingsResetDone"));
+  sound("switch");
+});
+
+$("#clearAllSettings").addEventListener("click",function(){
+  if(!confirm(language==="ru"
+    ? "Удалить все задачи, заметки и историю?"
+    : "Delete all tasks, notes and activity?")) return;
+  tasks=[];
+  notes=[];
+  activity=[];
+  save();
+  renderAll();
+  toast(t("cleared"));
+  sound("delete");
+});
+
+if(window.matchMedia){
+  window.matchMedia("(prefers-color-scheme: light)")
+    .addEventListener?.("change",applyThemeMode);
+}
+
+applyPersonalization();
+
+/* Override old theme buttons so the selected theme mode remains consistent. */
+function toggleTheme(){
+  const next=userSettings.theme==="dark" ? "light" :
+             userSettings.theme==="light" ? "system" : "dark";
+  userSettings.theme=next;
+  saveSettings();
+  applyPersonalization();
+  sound("switch");
 }
 
 
@@ -3000,78 +3282,185 @@ $("#swReset").addEventListener(
 
 
 /* =====================================================
-   CALCULATOR
+   CALCULATOR — SAFE EXPRESSION PARSER
 ===================================================== */
 
 let expression="";
+let calcHistory=JSON.parse(localStorage.getItem("north_calc_history") || "[]");
+
+function renderCalc(){
+  $("#calcDisplay").value=expression;
+  const history=$("#calcHistory");
+  history.innerHTML="";
+  if(!calcHistory.length){
+    history.innerHTML=`<div class="muted">${t("calcHistoryEmpty")}</div>`;
+    return;
+  }
+  calcHistory.slice(0,8).forEach(item=>{
+    const row=document.createElement("div");
+    row.className="calcHistoryItem";
+    row.textContent=item;
+    row.addEventListener("click",()=>{
+      expression=item.split(" = ")[1] || "";
+      $("#calcDisplay").value=expression;
+      sound("click");
+    });
+    history.appendChild(row);
+  });
+}
+
+function normalizeExpression(input){
+  return String(input)
+    .replace(/×/g,"*")
+    .replace(/÷/g,"/")
+    .replace(/−/g,"-")
+    .replace(/,/g,".");
+}
+
+function evaluateExpression(input){
+  const s=normalizeExpression(input).replace(/\s+/g,"");
+  if(!s) throw new Error("empty");
+  if(!/^[0-9+\-*/%.()]+$/.test(s)) throw new Error("chars");
+
+  let i=0;
+
+  function parseExpression(){
+    let value=parseTerm();
+    while(i<s.length && (s[i]=="+" || s[i]=="-")){
+      const op=s[i++];
+      const right=parseTerm();
+      value=op==="+" ? value+right : value-right;
+    }
+    return value;
+  }
+
+  function parseTerm(){
+    let value=parseFactor();
+    while(i<s.length && (s[i]=="*" || s[i]=="/" || s[i]=="%")){
+      const op=s[i++];
+      const right=parseFactor();
+      if(op==="*") value*=right;
+      else if(op==="/"){
+        if(right===0) throw new Error("zero");
+        value/=right;
+      }else{
+        value%=right;
+      }
+    }
+    return value;
+  }
+
+  function parseFactor(){
+    if(s[i]==="+"){i++;return parseFactor();}
+    if(s[i]==="-"){i++;return -parseFactor();}
+    if(s[i]==="("){
+      i++;
+      const value=parseExpression();
+      if(s[i]!==")") throw new Error("paren");
+      i++;
+      return value;
+    }
+    const start=i;
+    while(i<s.length && /[0-9.]/.test(s[i])) i++;
+    if(start===i) throw new Error("number");
+    const value=Number(s.slice(start,i));
+    if(!Number.isFinite(value)) throw new Error("number");
+    return value;
+  }
+
+  const result=parseExpression();
+  if(i!==s.length || !Number.isFinite(result)) throw new Error("invalid");
+  return result;
+}
+
+function formatCalcResult(value){
+  if(Object.is(value,-0)) value=0;
+  return Number.isInteger(value)
+    ? String(value)
+    : String(Number(value.toFixed(10)));
+}
+
+function calculate(){
+  try{
+    const result=formatCalcResult(evaluateExpression(expression));
+    calcHistory.unshift(expression+" = "+result);
+    calcHistory=calcHistory.slice(0,12);
+    localStorage.setItem("north_calc_history",JSON.stringify(calcHistory));
+    expression=result;
+    renderCalc();
+    sound("success");
+  }catch(error){
+    expression="";
+    $("#calcDisplay").value=t("calcError");
+    sound("error");
+    toast(t("calcError"));
+  }
+}
+
+function calcInput(c){
+  if(expression==="Error") expression="";
+  if(c==="sqrt"){
+    try{
+      const result=Math.sqrt(evaluateExpression(expression));
+      expression=formatCalcResult(result);
+    }catch(e){
+      toast(t("calcError")); sound("error"); return;
+    }
+  }else if(c==="square"){
+    try{
+      const result=Math.pow(evaluateExpression(expression),2);
+      expression=formatCalcResult(result);
+    }catch(e){
+      toast(t("calcError")); sound("error"); return;
+    }
+  }else if(c==="sign"){
+    try{
+      expression=formatCalcResult(-evaluateExpression(expression));
+    }catch(e){
+      if(expression.startsWith("-")) expression=expression.slice(1);
+      else expression="-"+expression;
+    }
+  }else if(c==="C"){
+    expression="";
+    sound("delete");
+  }else if(c==="="){
+    calculate();
+    return;
+  }else{
+    expression+=c;
+    sound("click");
+  }
+  renderCalc();
+}
 
 $$(".calc button").forEach(button=>{
-
- button.addEventListener(
-  "click",
-  function(){
-
-   const c=this.dataset.c;
-
-   if(c==="C"){
-
-    expression="";
-
-    sound("delete");
-
-   }
-
-   else if(c==="="){
-
-    try{
-
-     if(
-      !/^[0-9+\-*/(). ]+$/
-      .test(expression)
-     ){
-
-      throw new Error();
-
-     }
-
-     expression=String(
-      Function(
-       "return "+expression
-      )()
-     );
-
-     sound("success");
-
-    }catch(error){
-
-     expression="Error";
-
-     sound("error");
-
-    }
-
-   }
-
-   else{
-
-    if(expression==="Error"){
-     expression="";
-    }
-
-    expression+=c;
-
-    sound("click");
-
-   }
-
-   $("#calcDisplay").value=
-    expression;
-
-  }
- );
-
+  button.addEventListener("click",()=>calcInput(button.dataset.c));
 });
 
+$("#calcBackspace").addEventListener("click",()=>{
+  expression=expression.slice(0,-1);
+  renderCalc();
+  sound("delete");
+});
+
+$("#calcDisplay").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    e.preventDefault();
+    expression=$("#calcDisplay").value;
+    calculate();
+  }else if(e.key==="Escape"){
+    expression="";
+    renderCalc();
+  }else if(e.key==="Backspace"){
+    expression=$("#calcDisplay").value;
+  }
+});
+
+$("#calcDisplay").addEventListener("input",()=>{
+  expression=$("#calcDisplay").value;
+});
+
+renderCalc();
 
 /* =====================================================
    CONVERTER
